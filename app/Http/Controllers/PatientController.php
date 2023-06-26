@@ -5,15 +5,17 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePatientRequest;
 use App\Http\Requests\UpdatePatientRequest;
 use App\Models\Patient;
-use Illuminate\Http\Request;
+use App\Models\PatientRecord;
+use STS\ZipStream\ZipStreamFacade;
+use Illuminate\Support\Str;
 
 class PatientController extends Controller
 {
-   
+
     public function index()
     {
-        $patients = Patient::with("user")->get();
 
+        $patients = Patient::with("user")->get();
         return view("admin.patient.index", compact("patients"));
     }
 
@@ -30,8 +32,8 @@ class PatientController extends Controller
 
 
     public function edit(Patient $patient)
-    {   
-        return view("admin.patient.edit", compact("patient"));   
+    {
+        return view("admin.patient.edit", compact("patient"));
     }
 
     public function update(UpdatePatientRequest $request, Patient $patient)
@@ -45,7 +47,20 @@ class PatientController extends Controller
         $patient->delete();
         return back()->with("success", "Patient deleted successfully");
     }
-   
 
 
+    public function medicalProfile(Patient $patient)
+    {
+        return view("admin.patient.medical_profile", compact("patient"));
+    }
+
+    
+    public function files(PatientRecord $record)
+    {
+
+        return ZipStreamFacade::create(
+            'mytest12.zip',
+            $record->files->map(fn ($file) => storage_path("app\\" . $file))->flip()->toArray()
+        );
+    }
 }

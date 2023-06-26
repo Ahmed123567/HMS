@@ -129,4 +129,8 @@ class User extends Authenticatable
         }
         return $this->employee?->name;
     }
+
+    public function imageUrl() {
+        return 'storage/images/' . ( $this->image ?? "default.jpg" ) ;
+    }
 }

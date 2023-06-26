@@ -1,5 +1,5 @@
 <div class="row mt-5">
-    <div class="col-lg-4 col-md-6">
+    <div class="col-lg-3 col-md-6">
         <div class="card  bg-primary-gradient">
             <div class="card-body">
                 <div class="counter-status d-flex md-mb-0">
@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-4 col-md-6">
+    <div class="col-lg-3 col-md-6">
         <div class="card  bg-danger-gradient">
             <div class="card-body">
                 <div class="counter-status d-flex md-mb-0">
@@ -37,7 +37,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-4 col-md-6">
+    <div class="col-lg-3 col-md-6">
         <div class="card  bg-success-gradient">
             <div class="card-body">
                 <div class="counter-status d-flex md-mb-0">
@@ -45,9 +45,24 @@
                         <i class="icon icon-docs"></i>
                     </div>
                     <div class="mr-auto">
-                        <h5 class="tx-13 tx-white-8 mb-3">My Patients</h5>
+                        <a href="{{ route("doctor.patients", $employee->id) }}"><h5 class="tx-13 tx-white-8 mb-3">My Patients</h5>
                         <h2 class="counter mb-0 text-white">
                             {{ $employee?->reservatoins()->distinct()->count('patient_id') ?? 0 }}</h2>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card  bg-info-gradient">
+            <div class="card-body">
+                <div class="counter-status d-flex md-mb-0">
+                    <div class="counter-icon text-primary">
+                       <a href="{{ route("autoDoctor.index") }}"><i class="icon icon-docs"></i></a>
+                    </div>
+                    <div class="mr-auto">
+                        <a href="{{ route("autoDoctor.index") }}"><h5 class="tx-13 mt-4 mx-2 tx-white-8 mb-3">Auto Doctor</h5></a>
                     </div>
                 </div>
             </div>
@@ -84,15 +99,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($employee?->reservatoins()->today()?->latest()->take(5)->get() as $resrvation)
+                            @foreach($employee?->reservatoins()->today()?->latest()->take(5)->get() as $resrvation)
                                 <tr>
                                     <td scope="row">{{ $loop->iteration }}</td>
                                     <td>{{ $resrvation?->patient?->name }}</td>
                                     <td>{{ $resrvation?->time?->format('H:i') }}</td>
                                     <td class="d-flex">
 
-                                        <a class="badge btn btn-info mx-2" data-toggle="tooltip"
-                                            title="patient profile">
+                                        <a href="{{ route("patient.medicalProfile", $resrvation?->patient->id) }}" class="badge btn btn-info mx-2" data-toggle="tooltip"
+                                            title="patient profile" >
                                             <i class="mdi mdi-eye"></i>
                                         </a>
 
@@ -108,7 +123,7 @@
                                                 @csrf
                                                 <button data-button_name="Approve"
                                                     class="delete_button badge btn btn-primary" data-toggle="tooltip"
-                                                    title="Confirm" type="submit">
+                                                    title="Start Session" type="submit">
                                                     <i data-button_name="Approve" class="mdi mdi-pen"></i>
                                                 </button>
                                             </form>
@@ -143,6 +158,7 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Number Of Visits</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -151,9 +167,15 @@
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$patient->name}}</td>
                                     <td>{{$patient?->resrvations()->forAuthDoctor()->closed()->count()}}</td>
+                                    <td class="d-flex">
+
+                                        <a href="{{ route("patient.medicalProfile", $patient->id) }}" class="badge btn btn-info mx-2" data-toggle="tooltip"
+                                            title="patient profile" >
+                                            <i class="mdi mdi-eye"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
-                           
                         </tbody>
                     </table>
                 </div>

@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AttendanceEmployeeController;
+use App\Http\Controllers\AutoDoctorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PermissionController;
@@ -13,6 +15,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RomeController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\UserController;
+use App\Models\Patient;
 use App\Models\Permission;
 use Illuminate\Support\Facades\Route;
 
@@ -80,12 +83,25 @@ Route::middleware('auth')->group(function () {
 
     Route::get("doctorJson/{doctor}", [AppointmentController::class, "doctorJson"])->name("doctor.json");
 
+    Route::get("doctor/patients/{doctor}", [DoctorController::class, "patients"])->name("doctor.patients");
+
     Route::resource("patient", PatientController::class)->except("show");
+
+    Route::get("patient/medicalProfile/{patient}", [PatientController::class, "medicalProfile"])->name("patient.medicalProfile");
+    Route::get("patient/files/{record}", [PatientController::class, "files"])->name("patient.files");
 
     Route::resource("attendance", AttendanceEmployeeController::class)->only("index", "create", "store");
 
 
 
+
+    
+    Route::prefix("autoDoctor")->as("autoDoctor.")->controller(AutoDoctorController::class)->group(function () {
+        
+        Route::get("/", "index")->name("index");
+        Route::get("/covid", "covid")->name("covid");
+        Route::post("/covid", "covidCheck")->name("covidCheck");
+    });
 
     Route::controller(PermissionController::class)->prefix("permission")->as("permission.")->group(function () {
         Route::get("/", "index")->name("index");

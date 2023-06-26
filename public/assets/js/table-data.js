@@ -57,6 +57,7 @@ $(function(e) {
 			searchPlaceholder: 'Search...',
 			sSearch: '',
 			lengthMenu: '_MENU_',
+
 		},
 		responsive: {
 			details: {

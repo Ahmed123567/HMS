@@ -48,7 +48,7 @@
                                     <tr>
                                         <td>{{ $patient->name }}</td>
                                         <td>{{ $patient->gender() ?? '-' }}</td>
-                                        <td>{{ $patient->date_of_birth->format("Y-m-d") ?? '-' }}</td>
+                                        <td>{{ getCarbon($patient->date_of_birth)->format("Y-m-d") ?? '-' }}</td>
                                         <td>{{ $patient->national_id ?? '-'}}</td>
                                         <td>{{ $patient->insurance_number }}</td>
                                         

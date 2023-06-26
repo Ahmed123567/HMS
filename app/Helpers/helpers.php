@@ -39,4 +39,13 @@ if (!function_exists("tryThis")) {
                 : collect($dates)->map(fn ($date) => Carbon::parse($date));
         }
     }
+
+    if (!function_exists("defaultImage")) {
+        function defaultImage()
+        {
+            return 'storage/images/default.jpg';
+        }
+    }
+
+
 }

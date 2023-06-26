@@ -13,41 +13,47 @@ use Illuminate\Support\Facades\DB;
 
 class AppointmentController extends Controller
 {
-    public function index() {
-        
+    public function index()
+    {
+
         $doctors = Employee::doctors()->get();
         $patients = Patient::get();
         return view("admin.appoinmentReservation.index", compact("doctors", "patients"));
     }
 
-    public function store(StoreAppointmentResrvationRequest $request) {
-        
-       if($request->isRequestDayValid()) {
+    public function store(StoreAppointmentResrvationRequest $request)
+    {
+
+        if ($request->isRequestDayValid()) {
             return back()->with("error", "doctor is on holiday");
-       }
+        }
 
         AppointmentResrvation::create($request->validated());
 
         return back()->with("success", "appoinment reserved successfully");
     }
-    
-    
-    public function doctorJson(Employee $doctor) {
-    
-        $doctor->load(["reservatoins" => function($q) {
+
+
+    public function doctorJson(Employee $doctor)
+    {
+
+        $doctor->load(["reservatoins" => function ($q) {
             return $q->AtDay(request("time", now()))->orderBy("time");
-        } , "reservatoins.patient", "shift"]);
-       
+        }, "reservatoins.patient", "shift"]);
+
         return $doctor;
     }
 
 
-    public function confirm(AppointmentResrvation $appointmentResrvation) {
+    public function confirm(AppointmentResrvation $appointmentResrvation)
+    {
+
         $appointmentResrvation->confirm();
         return back()->with("success", "appointment confimed successfully");
     }
 
-    public function resrvations(Employee $doctor) {
+    public function resrvations(Employee $doctor)
+    {
 
         $reservations = $doctor?->reservatoins()->latest()->when(request("today") == 1, function ($q) {
             return $q->today();
@@ -56,18 +62,20 @@ class AppointmentController extends Controller
         return view("admin.doctor.resrvations", compact("reservations"));
     }
 
-    public function report(AppointmentResrvation $appointmentResrvation) {
+    public function report(AppointmentResrvation $appointmentResrvation)
+    {
 
         return view("admin.doctor.appointmentReport", compact("appointmentResrvation"));
     }
 
-    public function close(CloseAppointmentResrvationRequest $request,AppointmentResrvation $appointmentResrvation) {
+    public function close(CloseAppointmentResrvationRequest $request, AppointmentResrvation $appointmentResrvation)
+    {
 
         DB::transaction(function () use ($request, $appointmentResrvation) {
             $appointmentResrvation->report()->create($request->data());
-            $appointmentResrvation->close();        
+            $appointmentResrvation->close();
         });
-        
+
         return back()->with("success", "appointment closed successfully");
     }
 }

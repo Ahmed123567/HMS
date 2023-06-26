@@ -37,7 +37,7 @@ class CloseAppointmentResrvationRequest extends FormRequest
         if($this->has("files")) {
             foreach ($this->file('files') as $file) {
                 $path = $file->store('public/files/');
-                $filePathes[] = $path;
+                $filePathes[$file->getClientOriginalName()] = $path;
             }
         }
         

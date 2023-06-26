@@ -2,10 +2,15 @@
 
 namespace App\Providers;
 
+use App\Events\CovidCheckRan;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Process;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\Process\ExecutableFinder;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -25,7 +30,9 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Event::listen(function (CovidCheckRan $event) {
+            Artisan::call("run:covid");
+        });
     }
 
     /**

@@ -17,7 +17,7 @@ class PatientRecord extends Model
     ];
 
     protected $casts = [
-        "files" => "array"
+        "files" => "collection"
     ];
 
     public function resrvation() {

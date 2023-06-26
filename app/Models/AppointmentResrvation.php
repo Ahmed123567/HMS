@@ -47,6 +47,11 @@ class AppointmentResrvation extends Model
         return now()->gt($this->day);
     }
 
+    public function isPassed() {
+        // dd(now()->gt(getCarbon($this->time->format("Y-m-d"))), now()->format('Y-m-d'), $this->time->format("Y-m-d"));
+        return getCarbon(now()->format("Y-m-d"))->gt(getCarbon($this->time->format("Y-m-d"))) ;
+    }
+
     public function confirm() {
         $this->update(["is_confirmed" => 1]);
     }

@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 
 class DoctorController extends Controller
 {
-    public function resrvations(Employee $doctor) {
+    public function patients(Employee $doctor) {
+       
+        $patients = $doctor->patients();
 
+        return view("admin.doctor.patients", compact("patients"));
     }
 }
