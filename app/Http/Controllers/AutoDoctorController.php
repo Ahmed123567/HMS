@@ -30,9 +30,7 @@ class AutoDoctorController extends Controller
     }
 
     public function covidCheck(CovidCheckRequest $req) {
-            
-        // $req->image->storeAs("flask/pic/Samples/", "sample." . $req->image->extension());
-        
+                    
         $result = Http::flask()
                         ->attach('file', file_get_contents($req->image), 'sample.' . $req->image->extension())
                         ->post("covid");
