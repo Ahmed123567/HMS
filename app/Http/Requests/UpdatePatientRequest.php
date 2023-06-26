@@ -26,7 +26,10 @@ class UpdatePatientRequest extends FormRequest
             "job_title" => ["required", "string"],
             "date_of_birth" => ["required", "date"],
             "national_id" => ['required', "integer", "min:11"],
-            "insurance_number" => ["required", "integer"]
+            "insurance_number" => ["required", "integer"],
+            "medical_history" => [
+                "required"
+            ]
         ];
     }
 }
