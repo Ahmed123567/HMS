@@ -28,7 +28,6 @@ class AppointmentController extends Controller
     {
 
         AppointmentResrvation::create($request->validated());
-
         return back()->with("success", "appoinment reserved successfully");
     }
 

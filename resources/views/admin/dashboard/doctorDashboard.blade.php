@@ -106,8 +106,7 @@
                                     <td>{{ $resrvation?->time?->format('H:i') }}</td>
                                     <td class="d-flex">
 
-                                        <a href="{{ route("patient.medicalProfile", $resrvation?->patient->id) }}" class="badge btn btn-info mx-2" data-toggle="tooltip"
-                                            title="patient profile" >
+                                        <a href="{{ route("patient.medicalProfile", $resrvation?->patient->id) }}" class="badge btn btn-info mx-2"  >
                                             <i class="mdi mdi-eye"></i>
                                         </a>
 

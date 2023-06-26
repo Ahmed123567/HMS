@@ -24,9 +24,13 @@
             
             <div class="form-group col-6">
                 <label for="">Date Of Birth</label>
-                <input type="date" name="date_of_birth" value="{{ $patient->date_of_birth->format("Y-m-d") }}" class="form-control">
+                <input type="date" name="date_of_birth" value="{{ getCarbon($patient->date_of_birth)->format("Y-m-d") }}" class="form-control">
             </div>
 
+            <div class="form-group col-12">
+                <label for="">Medical History</label>
+                <textarea name="medical_history" class="form-control"  cols="30" rows="5">{{$patient->medical_history}}</textarea>
+            </div>
         </div>
     </div>
 

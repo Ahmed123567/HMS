@@ -26,6 +26,12 @@
                 <input type="date" name="date_of_birth" class="form-control">
             </div>
 
+            <div class="form-group col-12">
+                <label for="">Medical History</label>
+                <textarea name="medical_history" class="form-control" id="" cols="30" rows="5"></textarea>
+            </div>
+
+
         </div>
     </div>
 

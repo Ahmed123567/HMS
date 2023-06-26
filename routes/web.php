@@ -91,6 +91,9 @@ Route::middleware('auth')->group(function () {
     Route::resource("patient", PatientController::class)->except("show");
 
     Route::get("patient/medicalProfile/{patient}", [PatientController::class, "medicalProfile"])->name("patient.medicalProfile");
+    Route::get("patient/medicalHistory/{patient}", [PatientController::class, "medicalHistory"])->name("patient.medicalHistory");
+    Route::put("patient/updateHistory/{patient}", [PatientController::class, "updateHistory"])->name("patient.updateHistory");
+
     Route::get("patient/files/{record}", [PatientController::class, "files"])->name("patient.files");
 
     Route::resource("attendance", AttendanceEmployeeController::class)->only("index", "create", "store");

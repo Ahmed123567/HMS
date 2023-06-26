@@ -27,9 +27,11 @@
                             <input class="form-control mt-2" style="background: #ffffff" disabled type="text" value="Gender : {{ $patient->gender() }}">
                         </div>
                     </div>
-
                 </div>  
                 
+                <div class="col-6">
+                    <button class="modal_btn btn btn-primary mt-4" data-title="Medical History" data-url="{{ route("patient.medicalHistory", $patient->id) }}">Medical History</button>
+                </div>
 
             </div>
 

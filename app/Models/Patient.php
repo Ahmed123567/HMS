@@ -18,6 +18,7 @@ class Patient extends Model
         "national_id",
         "insurance_number",
         "room_id",
+        "medical_history"
     ];
 
     

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePatientRequest;
+use App\Http\Requests\UpdatePatientMedicalHistoryRequest;
 use App\Http\Requests\UpdatePatientRequest;
 use App\Models\Patient;
 use App\Models\PatientRecord;
@@ -55,6 +56,17 @@ class PatientController extends Controller
     }
 
     
+    public function medicalHistory(Patient $patient) {
+
+        return view("admin.patient.medical_history", compact("patient"));
+    }
+
+    public function updateHistory(UpdatePatientMedicalHistoryRequest $request, Patient $patient) {
+        
+        $patient->update($request->validated());
+        return back()->with("success", "medical history updated successfully");
+    }
+
     public function files(PatientRecord $record)
     {
 
