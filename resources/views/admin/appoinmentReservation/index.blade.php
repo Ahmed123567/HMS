@@ -35,12 +35,22 @@
                         <div class="row">
 
                             <div class="form-group col-3">
+                                <label for="">Deprtment</label>
+                                <select data-target="#doctor_select"  class="form-control" id="deparmtent_select">
+                                    <option disabled selected value="">choose Department</option>
+                                    @foreach ($departments as $deparmtent)
+                                        <option value="{{ $deparmtent->id }}">{{ $deparmtent->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error("deparmtent_id")
+                                    <span class="text-danger">{{$message}}</span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-3">
                                 <label for="">Doctor</label>
                                 <select name="doctor_id" class="form-control" id="doctor_select">
-                                    <option disabled selected value="">choose doctor</option>
-                                    @foreach ($doctors as $doctor)
-                                        <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
-                                    @endforeach
+                                    <option value="">choose doctor</option>
                                 </select>
                                 @error("doctor_id")
                                     <span class="text-danger">{{$message}}</span>
@@ -167,5 +177,24 @@
             doctorSelect.addEventListener("change", resrvationAction);
             time.addEventListener("change", resrvationAction);
             
+
+            const departmentSelect = document.getElementById("deparmtent_select");
+
+            departmentSelect.addEventListener("change", event => {
+
+                let url = "{{ route('deparmtent.doctors', ':id' ) }}";
+
+                url = url.replace(":id", event.target.value);
+
+                const targetSelect = document.querySelector(event.target.dataset.target);
+
+                fetch(url).then( async function(res) {
+                    
+                    const html = await res.text();
+                    targetSelect.innerHTML = html;
+                    // targetSelect.insertAdjacentHTML("beforeend", res);
+                });
+            });
+
         </script>
     @endpush

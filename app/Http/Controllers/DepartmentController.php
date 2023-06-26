@@ -63,4 +63,11 @@ class DepartmentController extends Controller
         return back()->with("success", "Department deleted successfully");
     }
 
+    public function deprtmentDoctors(Department $department) {
+
+        $doctors = $department->employees()->doctors()->get();
+
+        return view("admin.department.doctors", compact("doctors"));
+    }
+
 }

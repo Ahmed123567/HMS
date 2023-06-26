@@ -51,6 +51,8 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::resource("department", DepartmentController::class)->except("show");
+    Route::get("DepartmentDoctors/{department}", [DepartmentController::class, "deprtmentDoctors"])->name("deparmtent.doctors");
+
     Route::resource("shift", ShiftController::class)->except("show");
     Route::resource("room", RomeController::class)->except("show");
    
@@ -82,6 +84,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::get("doctorJson/{doctor}", [AppointmentController::class, "doctorJson"])->name("doctor.json");
+    
 
     Route::get("doctor/patients/{doctor}", [DoctorController::class, "patients"])->name("doctor.patients");
 

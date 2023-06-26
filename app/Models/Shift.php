@@ -25,4 +25,8 @@ class Shift extends Model
         "from" => "datetime:H:i:s",
         "to" => "datetime:H:i:s",
     ];
+
+    public function inShiftHours($time) {
+        return getCarbon($time)->between($this->from, $this->to);
+    }
 }

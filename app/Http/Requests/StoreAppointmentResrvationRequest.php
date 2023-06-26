@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Models\Employee;
 use App\Models\Role;
+use Closure;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -27,11 +28,25 @@ class StoreAppointmentResrvationRequest extends FormRequest
         return [
             "doctor_id" => ["required", "exists:employees,id"],
             "patient_id" => ["required", "exists:patients,id"],
-            "time" => ["required"],
+            "time" => [
+                "required",
+                function (string $attribute, mixed $value, Closure $fail) {
+
+                    if ($this->doctor()->isHoliday($value)) {
+                        $fail("invalid date doctor is on holiday");
+                    }
+
+                    if (!$this->doctor()->shift?->inShiftHours($value)) {
+                        $fail("reservation time is not in shift hours");
+                    }
+                }
+            ],
         ];
     }
 
-    public function isRequestDayValid() {
-        return  Employee::find($this->doctor_id)->isHoliday($this->time);
+
+    public function doctor()
+    {
+        return Employee::find($this->doctor_id);
     }
 }

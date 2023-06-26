@@ -48,7 +48,6 @@ class AppointmentResrvation extends Model
     }
 
     public function isPassed() {
-        // dd(now()->gt(getCarbon($this->time->format("Y-m-d"))), now()->format('Y-m-d'), $this->time->format("Y-m-d"));
         return getCarbon(now()->format("Y-m-d"))->gt(getCarbon($this->time->format("Y-m-d"))) ;
     }
 

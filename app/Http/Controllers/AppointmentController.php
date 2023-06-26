@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CloseAppointmentResrvationRequest;
 use App\Http\Requests\StoreAppointmentResrvationRequest;
 use App\Models\AppointmentResrvation;
+use App\Models\Department;
 use App\Models\Employee;
 use App\Models\Patient;
 use App\Models\User;
@@ -16,17 +17,15 @@ class AppointmentController extends Controller
     public function index()
     {
 
-        $doctors = Employee::doctors()->get();
+        // $doctors = Employee::doctors()->get();
         $patients = Patient::get();
-        return view("admin.appoinmentReservation.index", compact("doctors", "patients"));
+        $departments = Department::get();
+
+        return view("admin.appoinmentReservation.index", compact("departments", "patients"));
     }
 
     public function store(StoreAppointmentResrvationRequest $request)
     {
-
-        if ($request->isRequestDayValid()) {
-            return back()->with("error", "doctor is on holiday");
-        }
 
         AppointmentResrvation::create($request->validated());
 
