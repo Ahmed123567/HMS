@@ -39,6 +39,7 @@
                                     <th>Date Of Birth</th>
                                     <th>National Id</th>
                                     <th>Insurance Number</th>
+                                    <th>Has Account</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -51,9 +52,12 @@
                                         <td>{{ getCarbon($patient->date_of_birth)->format("Y-m-d") ?? '-' }}</td>
                                         <td>{{ $patient->national_id ?? '-'}}</td>
                                         <td>{{ $patient->insurance_number }}</td>
-                                        
+                                        <td>{{ $patient->user ? "Yes" : "No" }}</td>
                                         <td class="d-flex">
                                             <x-crud :model="$patient"/>
+                                            {{-- @if (!$patient->user)
+                                                <button data-toggle="tooltip" title="Create Account" class="btn btn-sm badge btn-secondary"><i class="fa fa-user"></i></button>
+                                            @endif --}}
                                         </td>
                                     </tr>
                                 @endforeach

@@ -111,7 +111,7 @@
                                         </a>
 
                                         @if (!$resrvation?->isClosed() && $resrvation?->isConfirmed())
-                                            <button data-title="Appointmet Report" data-url="{{route("appointment.reserve.report", $resrvation->id)}}" class=" modal_btn badge btn btn-primary mx-2" data-toggle="tooltip" title="close">
+                                            <button data-title="Appointmet Report" data-url="{{route("appointment.reserve.report", $resrvation->id)}}" class=" modal_btn badge btn btn-primary mx-2" >
                                                 <i class="mdi mdi-close"></i>
                                             </button>
                                         @endif
@@ -121,8 +121,7 @@
                                                 method="post" class="mx-2">
                                                 @csrf
                                                 <button data-button_name="Approve"
-                                                    class="delete_button badge btn btn-primary" data-toggle="tooltip"
-                                                    title="Start Session" type="submit">
+                                                    class="delete_button badge btn btn-primary"  type="submit">
                                                     <i data-button_name="Approve" class="mdi mdi-pen"></i>
                                                 </button>
                                             </form>

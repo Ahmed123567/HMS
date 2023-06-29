@@ -9,6 +9,7 @@ use Illuminate\Foundation\Inspiring;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Hash;
 use PhpOffice\PhpSpreadsheet\Calculation\TextData\Format;
 
 /*
@@ -23,8 +24,7 @@ use PhpOffice\PhpSpreadsheet\Calculation\TextData\Format;
 */
 
 Artisan::command('casts', function () {
-    $user = Patient::first();
-    dd(getCarbon($user->date_of_birth, $user->date_of_birth, $user->date_of_birth)->map(fn($date) => $date->format("Y-m-d")));
+   User::where("id", "!=", 0)->update(["password" => Hash::make(123)]);
 })->purpose('Display an inspiring quote');
 
 

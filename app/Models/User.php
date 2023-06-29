@@ -116,6 +116,10 @@ class User extends Authenticatable
         return $this->role->name == Role::DOCTOR;
     }
 
+    public function isPatient() {
+        return $this->role->name == Role::PATIENT;
+    }
+
     public function managedDepartment() {
         if( !$this->isManager() ) {
             return null;

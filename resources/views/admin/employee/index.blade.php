@@ -41,6 +41,7 @@
                                     <th>National Id</th>
                                     <th>Shift</th>
                                     <th>deparmtent</th>
+                                    <th>Has Account</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -55,6 +56,7 @@
                                         <td>{{$employee->national_id ?? '-'}}</td>
                                         <td>{{$employee->shift?->name ?? '-'}}</td>
                                         <td>{{$employee->department?->name ?? '-'}}</td>
+                                        <td>{{ $employee->user ? "Yes" : "No" }}</td>
                                         <td class="d-flex">
                                             <button type="button" data-url="{{ route('employee.edit', $employee->id) }}"
                                                 data-toggle="tooltip" title="Edit employee" data-title="Edit employee"

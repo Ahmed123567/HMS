@@ -86,26 +86,7 @@
                     </form>
 
                     <div class="reservations" id="reservations">
-                        <h5 class = "pt-3">Doctor Rerservations :</h5>
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-3">Number Of Resrvations : </div>
-                                    <div class="col-3">From : </div>
-                                    <div class="col-3">To : </div>
-                                </div>
-                            </div>
-                        </div>
-                        <h5>Reservations :</h5>
-
-                        <div class="card">
-                            <div class="card-body ">
-                                <div class="row">
-                                    <div class="col-4">patient : </div>
-                                    <div class="col-4">Time : </div>
-                                </div>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
@@ -125,7 +106,6 @@
 
                 fetch(doctorUrl).then(async response => {
                     let doctor = await response.json();
-                    console.log(doctor);
                     let html = `
                         <h5 class = "pt-3">Doctor Rerservations :</h5>
                         <div class="card">
@@ -141,7 +121,6 @@
                         <h5>Reservations :</h5>
                     `;
                     
-                    console.log(doctor);
                     if(doctor.reservatoins.length !== 0) {
 
                         doctor.reservatoins.forEach(resrvation => {
@@ -192,7 +171,6 @@
                     
                     const html = await res.text();
                     targetSelect.innerHTML = html;
-                    // targetSelect.insertAdjacentHTML("beforeend", res);
                 });
             });
 

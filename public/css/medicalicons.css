@@ -1,0 +1,1803 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/medical/icomoon.eot?vt4kzx===');
+  src:  url('../fonts/medical/icomoon.eot?vt4kzx#iefix') format('embedded-opentype'),
+    url('../fonts/medical/icomoon.ttf?vt4kzx') format('truetype'),
+    url('../fonts/medical/icomoon.woff?vt4kzx') format('woff'),
+    url('../fonts/medical/icomoon.svg?vt4kzx#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-uniE900:before {
+  content: "\e900";
+}
+.icon-0:before {
+  content: "\e901";
+}
+.icon-1:before {
+  content: "\e902";
+}
+.icon-2:before {
+  content: "\e903";
+}
+.icon-g:before {
+  content: "\e904";
+}
+.icon-3:before {
+  content: "\e905";
+}
+.icon-g1:before {
+  content: "\e906";
+}
+.icon-4:before {
+  content: "\e907";
+}
+.icon-x4:before {
+  content: "\e908";
+}
+.icon-5:before {
+  content: "\e909";
+}
+.icon-6:before {
+  content: "\e90a";
+}
+.icon-7:before {
+  content: "\e90b";
+}
+.icon-8:before {
+  content: "\e90c";
+}
+.icon-9:before {
+  content: "\e90d";
+}
+.icon-A:before {
+  content: "\e90e";
+}
+.icon-accident_and_emergency:before {
+  content: "\e90f";
+}
+.icon-admissions:before {
+  content: "\e910";
+}
+.icon-agriculture:before {
+  content: "\e911";
+}
+.icon-agriculture_worker:before {
+  content: "\e912";
+}
+.icon-agriculture_worker_alt:before {
+  content: "\e913";
+}
+.icon-alcohol:before {
+  content: "\e914";
+}
+.icon-alert:before {
+  content: "\e915";
+}
+.icon-alert_circle:before {
+  content: "\e916";
+}
+.icon-alert_triangle:before {
+  content: "\e917";
+}
+.icon-allergies:before {
+  content: "\e918";
+}
+.icon-ambulance:before {
+  content: "\e919";
+}
+.icon-ambulatory_clinic:before {
+  content: "\e91a";
+}
+.icon-ancv:before {
+  content: "\e91b";
+}
+.icon-angry:before {
+  content: "\e91c";
+}
+.icon-animal_chicken:before {
+  content: "\e91d";
+}
+.icon-animal_cow:before {
+  content: "\e91e";
+}
+.icon-animal_donkey:before {
+  content: "\e91f";
+}
+.icon-animal_spider:before {
+  content: "\e920";
+}
+.icon-animal_tick:before {
+  content: "\e921";
+}
+.icon-arm:before {
+  content: "\e922";
+}
+.icon-assembly_point:before {
+  content: "\e923";
+}
+.icon-asthma:before {
+  content: "\e924";
+}
+.icon-award_ribbon:before {
+  content: "\e925";
+}
+.icon-award_trophy:before {
+  content: "\e926";
+}
+.icon-B:before {
+  content: "\e927";
+}
+.icon-baby_0203_alt:before {
+  content: "\e928";
+}
+.icon-baby_0203m:before {
+  content: "\e929";
+}
+.icon-baby_0306m:before {
+  content: "\e92a";
+}
+.icon-baby_female_0203m:before {
+  content: "\e92b";
+}
+.icon-baby_female_0203m_alt:before {
+  content: "\e92c";
+}
+.icon-baby_female_0306m:before {
+  content: "\e92d";
+}
+.icon-baby_female_0609m:before {
+  content: "\e92e";
+}
+.icon-baby_male_0203m:before {
+  content: "\e92f";
+}
+.icon-baby_male_0203m_alt:before {
+  content: "\e930";
+}
+.icon-baby_male_0306m:before {
+  content: "\e931";
+}
+.icon-baby_male_0609m:before {
+  content: "\e932";
+}
+.icon-back_pain:before {
+  content: "\e933";
+}
+.icon-bacteria:before {
+  content: "\e934";
+}
+.icon-bandage_adhesive:before {
+  content: "\e935";
+}
+.icon-bandaged:before {
+  content: "\e936";
+}
+.icon-basic_motorcycle:before {
+  content: "\e937";
+}
+.icon-bike:before {
+  content: "\e938";
+}
+.icon-bills:before {
+  content: "\e939";
+}
+.icon-biochemistry_laboratory:before {
+  content: "\e93a";
+}
+.icon-bladder:before {
+  content: "\e93b";
+}
+.icon-blister_pills_oval_x1:before {
+  content: "\e93c";
+}
+.icon-blister_pills_oval_x4:before {
+  content: "\e93d";
+}
+.icon-blister_pills_oval_x14:before {
+  content: "\e93e";
+}
+.icon-blister_pills_oval_x16:before {
+  content: "\e93f";
+}
+.icon-blister_pills_round_x1:before {
+  content: "\e940";
+}
+.icon-blister_pills_round_x4:before {
+  content: "\e941";
+}
+.icon-blister_pills_round_x14:before {
+  content: "\e942";
+}
+.icon-blister_pills_round_x16:before {
+  content: "\e943";
+}
+.icon-blood_a_n:before {
+  content: "\e944";
+}
+.icon-blood_a_p:before {
+  content: "\e945";
+}
+.icon-blood_ab_n:before {
+  content: "\e946";
+}
+.icon-blood_ab_p:before {
+  content: "\e947";
+}
+.icon-blood_b_n:before {
+  content: "\e948";
+}
+.icon-blood_b_p:before {
+  content: "\e949";
+}
+.icon-blood_bag:before {
+  content: "\e94a";
+}
+.icon-blood_cells:before {
+  content: "\e94b";
+}
+.icon-blood_drop:before {
+  content: "\e94c";
+}
+.icon-blood_o_n:before {
+  content: "\e94d";
+}
+.icon-blood_o_p:before {
+  content: "\e94e";
+}
+.icon-blood_pressure:before {
+  content: "\e94f";
+}
+.icon-blood_pressure_2:before {
+  content: "\e950";
+}
+.icon-blood_pressure_monitor:before {
+  content: "\e951";
+}
+.icon-blood_rh_n:before {
+  content: "\e952";
+}
+.icon-blood_rh_p:before {
+  content: "\e953";
+}
+.icon-blood_vessel:before {
+  content: "\e954";
+}
+.icon-body:before {
+  content: "\e955";
+}
+.icon-book:before {
+  content: "\e956";
+}
+.icon-boy_0105y:before {
+  content: "\e957";
+}
+.icon-boy_1015y:before {
+  content: "\e958";
+}
+.icon-breeding_sites:before {
+  content: "\e959";
+}
+.icon-C:before {
+  content: "\e95a";
+}
+.icon-calendar:before {
+  content: "\e95b";
+}
+.icon-calendar-quarantine:before {
+  content: "\e95c";
+}
+.icon-call_centre:before {
+  content: "\e95d";
+}
+.icon-calm:before {
+  content: "\e95e";
+}
+.icon-cannabis:before {
+  content: "\e95f";
+}
+.icon-cardiogram:before {
+  content: "\e960";
+}
+.icon-cardiogram_e:before {
+  content: "\e961";
+}
+.icon-cardiology:before {
+  content: "\e962";
+}
+.icon-cast:before {
+  content: "\e963";
+}
+.icon-cervical_cancer:before {
+  content: "\e964";
+}
+.icon-chaplaincy:before {
+  content: "\e965";
+}
+.icon-chart_bar:before {
+  content: "\e966";
+}
+.icon-chart_bar_stacked:before {
+  content: "\e967";
+}
+.icon-chart_line:before {
+  content: "\e968";
+}
+.icon-chart_line_stacked:before {
+  content: "\e969";
+}
+.icon-chart_pie:before {
+  content: "\e96a";
+}
+.icon-chart-cured-decreasing:before {
+  content: "\e96b";
+}
+.icon-chart-cured-increasing:before {
+  content: "\e96c";
+}
+.icon-chart-death-rate-decreasing:before {
+  content: "\e96d";
+}
+.icon-chart-death-rate-increasing:before {
+  content: "\e96e";
+}
+.icon-chart-death-rate-stable:before {
+  content: "\e96f";
+}
+.icon-chart-infected-decreasing:before {
+  content: "\e970";
+}
+.icon-chart-infected-increasing:before {
+  content: "\e971";
+}
+.icon-chart-infected-stable:before {
+  content: "\e972";
+}
+.icon-child_care:before {
+  content: "\e973";
+}
+.icon-child_cognition:before {
+  content: "\e974";
+}
+.icon-child_program:before {
+  content: "\e975";
+}
+.icon-chills:before {
+  content: "\e976";
+}
+.icon-chills_fever:before {
+  content: "\e977";
+}
+.icon-cholera:before {
+  content: "\e978";
+}
+.icon-church:before {
+  content: "\e979";
+}
+.icon-circle_large:before {
+  content: "\e97a";
+}
+.icon-circle_medium:before {
+  content: "\e97b";
+}
+.icon-circle_small:before {
+  content: "\e97c";
+}
+.icon-city:before {
+  content: "\e97d";
+}
+.icon-city_worker:before {
+  content: "\e97e";
+}
+.icon-clean_hands:before {
+  content: "\e97f";
+}
+.icon-cleaning:before {
+  content: "\e980";
+}
+.icon-clinical_a:before {
+  content: "\e981";
+}
+.icon-clinical_f:before {
+  content: "\e982";
+}
+.icon-clinical_fe:before {
+  content: "\e983";
+}
+.icon-coins:before {
+  content: "\e984";
+}
+.icon-cold_chain:before {
+  content: "\e985";
+}
+.icon-communication:before {
+  content: "\e986";
+}
+.icon-community_healthworker:before {
+  content: "\e987";
+}
+.icon-community_meeting:before {
+  content: "\e988";
+}
+.icon-cone_test_on_nets:before {
+  content: "\e989";
+}
+.icon-cone_test_on_walls:before {
+  content: "\e98a";
+}
+.icon-confused:before {
+  content: "\e98b";
+}
+.icon-construction:before {
+  content: "\e98c";
+}
+.icon-construction_worker:before {
+  content: "\e98d";
+}
+.icon-contact_lenses:before {
+  content: "\e98e";
+}
+.icon-contact_support:before {
+  content: "\e98f";
+}
+.icon-contraceptive_diaphragm:before {
+  content: "\e990";
+}
+.icon-contraceptive_injection:before {
+  content: "\e991";
+}
+.icon-contraceptive_patch:before {
+  content: "\e992";
+}
+.icon-contraceptive_voucher:before {
+  content: "\e993";
+}
+.icon-copper_iud:before {
+  content: "\e994";
+}
+.icon-coronary_care_unit:before {
+  content: "\e995";
+}
+.icon-coughing:before {
+  content: "\e996";
+}
+.icon-coughing_alt:before {
+  content: "\e997";
+}
+.icon-credit_card:before {
+  content: "\e998";
+}
+.icon-critical_care:before {
+  content: "\e999";
+}
+.icon-cross_country_motorcycle:before {
+  content: "\e99a";
+}
+.icon-crying:before {
+  content: "\e99b";
+}
+.icon-D:before {
+  content: "\e99c";
+}
+.icon-database:before {
+  content: "\e99d";
+}
+.icon-deaf:before {
+  content: "\e99e";
+}
+.icon-death:before {
+  content: "\e99f";
+}
+.icon-death_alt:before {
+  content: "\e9a0";
+}
+.icon-death_alt2:before {
+  content: "\e9a1";
+}
+.icon-default:before {
+  content: "\e9a2";
+}
+.icon-defibrilator:before {
+  content: "\e9a3";
+}
+.icon-dental_hygiene:before {
+  content: "\e9a4";
+}
+.icon-desktop_app:before {
+  content: "\e9a5";
+}
+.icon-dhis2_logo:before {
+  content: "\e9a6";
+}
+.icon-diabetes:before {
+  content: "\e9a7";
+}
+.icon-diabetes_measure:before {
+  content: "\e9a8";
+}
+.icon-diarrhea:before {
+  content: "\e9a9";
+}
+.icon-discharge:before {
+  content: "\e9aa";
+}
+.icon-discharge_lounge:before {
+  content: "\e9ab";
+}
+.icon-discriminating_concentration_bioassays:before {
+  content: "\e9ac";
+}
+.icon-disinfecting_wipes:before {
+  content: "\e9ad";
+}
+.icon-dizzy:before {
+  content: "\e9ae";
+}
+.icon-dna:before {
+  content: "\e9af";
+}
+.icon-doctor:before {
+  content: "\e9b0";
+}
+.icon-doctor_female:before {
+  content: "\e9b1";
+}
+.icon-doctor_male:before {
+  content: "\e9b2";
+}
+.icon-dollar:before {
+  content: "\e9b3";
+}
+.icon-domestic_worker:before {
+  content: "\e9b4";
+}
+.icon-domestic_worker_alt:before {
+  content: "\e9b5";
+}
+.icon-drone:before {
+  content: "\e9b6";
+}
+.icon-E:before {
+  content: "\e9b7";
+}
+.icon-ear:before {
+  content: "\e9b8";
+}
+.icon-ears_nose_and_throat:before {
+  content: "\e9b9";
+}
+.icon-eco_care:before {
+  content: "\e9ba";
+}
+.icon-elderly:before {
+  content: "\e9bb";
+}
+.icon-electricity:before {
+  content: "\e9bc";
+}
+.icon-emergency_post:before {
+  content: "\e9bd";
+}
+.icon-endocrinology:before {
+  content: "\e9be";
+}
+.icon-entry:before {
+  content: "\e9bf";
+}
+.icon-enzyme:before {
+  content: "\e9c0";
+}
+.icon-excel_logo:before {
+  content: "\e9c1";
+}
+.icon-exercise:before {
+  content: "\e9c2";
+}
+.icon-exercise_bicycle:before {
+  content: "\e9c3";
+}
+.icon-exercise_running:before {
+  content: "\e9c4";
+}
+.icon-exercise_walk_supported:before {
+  content: "\e9c5";
+}
+.icon-exercise_walking:before {
+  content: "\e9c6";
+}
+.icon-exercise_weights:before {
+  content: "\e9c7";
+}
+.icon-expectorate:before {
+  content: "\e9c8";
+}
+.icon-eye:before {
+  content: "\e9c9";
+}
+.icon-eyeglasses:before {
+  content: "\e9ca";
+}
+.icon-F:before {
+  content: "\e9cb";
+}
+.icon-factory_worker:before {
+  content: "\e9cc";
+}
+.icon-family_planning:before {
+  content: "\e9cd";
+}
+.icon-female_and_male:before {
+  content: "\e9ce";
+}
+.icon-female_condom:before {
+  content: "\e9cf";
+}
+.icon-female_reproductive_system:before {
+  content: "\e9d0";
+}
+.icon-female_sex_worker:before {
+  content: "\e9d1";
+}
+.icon-fetus:before {
+  content: "\e9d2";
+}
+.icon-fever:before {
+  content: "\e9d3";
+}
+.icon-FHIR_logo:before {
+  content: "\e9d4";
+}
+.icon-finance_dept:before {
+  content: "\e9d5";
+}
+.icon-fingerprint:before {
+  content: "\e9d6";
+}
+.icon-foot:before {
+  content: "\e9d7";
+}
+.icon-forest:before {
+  content: "\e9d8";
+}
+.icon-forest_persons:before {
+  content: "\e9d9";
+}
+.icon-forum:before {
+  content: "\e9da";
+}
+.icon-fruits:before {
+  content: "\e9db";
+}
+.icon-G:before {
+  content: "\e9dc";
+}
+.icon-gallbladder:before {
+  content: "\e9dd";
+}
+.icon-gastroenterology:before {
+  content: "\e9de";
+}
+.icon-geo_location:before {
+  content: "\e9df";
+}
+.icon-geriatrics:before {
+  content: "\e9e0";
+}
+.icon-ghana:before {
+  content: "\e9e1";
+}
+.icon-girl_0105y:before {
+  content: "\e9e2";
+}
+.icon-girl_1015y:before {
+  content: "\e9e3";
+}
+.icon-global-pandemic:before {
+  content: "\e9e4";
+}
+.icon-globe:before {
+  content: "\e9e5";
+}
+.icon-group_discussion_meeting:before {
+  content: "\e9e6";
+}
+.icon-group_discussion_meetingx3:before {
+  content: "\e9e7";
+}
+.icon-guide_dog:before {
+  content: "\e9e8";
+}
+.icon-gym:before {
+  content: "\e9e9";
+}
+.icon-gynecology:before {
+  content: "\e9ea";
+}
+.icon-H:before {
+  content: "\e9eb";
+}
+.icon-happy:before {
+  content: "\e9ec";
+}
+.icon-hazardous:before {
+  content: "\e9ed";
+}
+.icon-headache:before {
+  content: "\e9ee";
+}
+.icon-health:before {
+  content: "\e9ef";
+}
+.icon-health_alt:before {
+  content: "\e9f0";
+}
+.icon-health_data_security:before {
+  content: "\e9f1";
+}
+.icon-health_data_sync:before {
+  content: "\e9f2";
+}
+.icon-health_literacy:before {
+  content: "\e9f3";
+}
+.icon-health_worker:before {
+  content: "\e9f4";
+}
+.icon-health_worker_form:before {
+  content: "\e9f5";
+}
+.icon-heart:before {
+  content: "\e9f6";
+}
+.icon-heart_cardiogram:before {
+  content: "\e9f7";
+}
+.icon-helicopter:before {
+  content: "\e9f8";
+}
+.icon-hematology:before {
+  content: "\e9f9";
+}
+.icon-hematology_laboratory:before {
+  content: "\e9fa";
+}
+.icon-hepatology:before {
+  content: "\e9fb";
+}
+.icon-high_bars:before {
+  content: "\e9fc";
+}
+.icon-high_level:before {
+  content: "\e9fd";
+}
+.icon-hiv_ind:before {
+  content: "\e9fe";
+}
+.icon-hiv_neg:before {
+  content: "\e9ff";
+}
+.icon-hiv_pos:before {
+  content: "\ea00";
+}
+.icon-hiv_self_test:before {
+  content: "\ea01";
+}
+.icon-home:before {
+  content: "\ea02";
+}
+.icon-home_alt:before {
+  content: "\ea03";
+}
+.icon-home-quarantine:before {
+  content: "\ea04";
+}
+.icon-hormonal_ring:before {
+  content: "\ea05";
+}
+.icon-hospice:before {
+  content: "\ea06";
+}
+.icon-hospital:before {
+  content: "\ea07";
+}
+.icon-hospital_symbol:before {
+  content: "\ea08";
+}
+.icon-hospitalized:before {
+  content: "\ea09";
+}
+.icon-hot_meal:before {
+  content: "\ea0a";
+}
+.icon-hpv:before {
+  content: "\ea0b";
+}
+.icon-human_resoruces:before {
+  content: "\ea0c";
+}
+.icon-I:before {
+  content: "\ea0d";
+}
+.icon-i_certificate_paper:before {
+  content: "\ea0e";
+}
+.icon-i_documents_accepted:before {
+  content: "\ea0f";
+}
+.icon-i_documents_denied:before {
+  content: "\ea10";
+}
+.icon-i_exam_multiple_choice:before {
+  content: "\ea11";
+}
+.icon-i_exam_qualification:before {
+  content: "\ea12";
+}
+.icon-i_groups_perspective_crowd:before {
+  content: "\ea13";
+}
+.icon-i_note_action:before {
+  content: "\ea14";
+}
+.icon-i_schedule_school_date_time:before {
+  content: "\ea15";
+}
+.icon-i_training_class:before {
+  content: "\ea16";
+}
+.icon-i_utensils:before {
+  content: "\ea17";
+}
+.icon-imm:before {
+  content: "\ea18";
+}
+.icon-implant:before {
+  content: "\ea19";
+}
+.icon-info:before {
+  content: "\ea1a";
+}
+.icon-information_campaign:before {
+  content: "\ea1b";
+}
+.icon-inpatient:before {
+  content: "\ea1c";
+}
+.icon-insecticide_resistance:before {
+  content: "\ea1d";
+}
+.icon-intensity_concentration_bioassays:before {
+  content: "\ea1e";
+}
+.icon-intensive_care_unit:before {
+  content: "\ea1f";
+}
+.icon-intestinal-pain:before {
+  content: "\ea20";
+}
+.icon-intestine:before {
+  content: "\ea21";
+}
+.icon-intravenous_bag:before {
+  content: "\ea22";
+}
+.icon-iud:before {
+  content: "\ea23";
+}
+.icon-J:before {
+  content: "\ea24";
+}
+.icon-joints:before {
+  content: "\ea25";
+}
+.icon-justice:before {
+  content: "\ea26";
+}
+.icon-K:before {
+  content: "\ea27";
+}
+.icon-kidneys:before {
+  content: "\ea28";
+}
+.icon-L:before {
+  content: "\ea29";
+}
+.icon-lactation:before {
+  content: "\ea2a";
+}
+.icon-leg:before {
+  content: "\ea2b";
+}
+.icon-letrina:before {
+  content: "\ea2c";
+}
+.icon-letrina_alt:before {
+  content: "\ea2d";
+}
+.icon-liver:before {
+  content: "\ea2e";
+}
+.icon-liver-alt:before {
+  content: "\ea2f";
+}
+.icon-llin:before {
+  content: "\ea30";
+}
+.icon-loss-smell:before {
+  content: "\ea31";
+}
+.icon-loudly_crying:before {
+  content: "\ea32";
+}
+.icon-low_bars:before {
+  content: "\ea33";
+}
+.icon-low_level:before {
+  content: "\ea34";
+}
+.icon-low_vision:before {
+  content: "\ea35";
+}
+.icon-lungs:before {
+  content: "\ea36";
+}
+.icon-lymph_nodes:before {
+  content: "\ea37";
+}
+.icon-M:before {
+  content: "\ea38";
+}
+.icon-machinery:before {
+  content: "\ea39";
+}
+.icon-magnifying_glass:before {
+  content: "\ea3a";
+}
+.icon-malaria_microscope:before {
+  content: "\ea3b";
+}
+.icon-malaria_mixed_microscope:before {
+  content: "\ea3c";
+}
+.icon-malaria_outbreak:before {
+  content: "\ea3d";
+}
+.icon-malaria_pf_microscope:before {
+  content: "\ea3e";
+}
+.icon-malaria_pv_microscope:before {
+  content: "\ea3f";
+}
+.icon-malaria_testing:before {
+  content: "\ea40";
+}
+.icon-male_and_female:before {
+  content: "\ea41";
+}
+.icon-male_condom:before {
+  content: "\ea42";
+}
+.icon-male_sex_worker:before {
+  content: "\ea43";
+}
+.icon-man:before {
+  content: "\ea44";
+}
+.icon-market_stall:before {
+  content: "\ea45";
+}
+.icon-masked:before {
+  content: "\ea46";
+}
+.icon-measles:before {
+  content: "\ea47";
+}
+.icon-medical_advice:before {
+  content: "\ea48";
+}
+.icon-medical_records:before {
+  content: "\ea49";
+}
+.icon-medicines:before {
+  content: "\ea4a";
+}
+.icon-medium_bars:before {
+  content: "\ea4b";
+}
+.icon-medium_level:before {
+  content: "\ea4c";
+}
+.icon-megaphone:before {
+  content: "\ea4d";
+}
+.icon-mental_disorders:before {
+  content: "\ea4e";
+}
+.icon-microscope:before {
+  content: "\ea4f";
+}
+.icon-military_worker:before {
+  content: "\ea50";
+}
+.icon-miner_worker:before {
+  content: "\ea51";
+}
+.icon-miner_worker_alt:before {
+  content: "\ea52";
+}
+.icon-ministry_of_health:before {
+  content: "\ea53";
+}
+.icon-mobile:before {
+  content: "\ea54";
+}
+.icon-mobile_clinic:before {
+  content: "\ea55";
+}
+.icon-money_bag:before {
+  content: "\ea56";
+}
+.icon-mosque:before {
+  content: "\ea57";
+}
+.icon-mosquito:before {
+  content: "\ea58";
+}
+.icon-mosquito_collection:before {
+  content: "\ea59";
+}
+.icon-mouth:before {
+  content: "\ea5a";
+}
+.icon-msm:before {
+  content: "\ea5b";
+}
+.icon-N:before {
+  content: "\ea5c";
+}
+.icon-nausea:before {
+  content: "\ea5d";
+}
+.icon-nauseous:before {
+  content: "\ea5e";
+}
+.icon-negative:before {
+  content: "\ea5f";
+}
+.icon-nephrology:before {
+  content: "\ea60";
+}
+.icon-nerve:before {
+  content: "\ea61";
+}
+.icon-nervous:before {
+  content: "\ea62";
+}
+.icon-network_4g:before {
+  content: "\ea63";
+}
+.icon-network_5g:before {
+  content: "\ea64";
+}
+.icon-neuro_surgery:before {
+  content: "\ea65";
+}
+.icon-neurology:before {
+  content: "\ea66";
+}
+.icon-neutral:before {
+  content: "\ea67";
+}
+.icon-no:before {
+  content: "\ea68";
+}
+.icon-nose:before {
+  content: "\ea69";
+}
+.icon-not_ok:before {
+  content: "\ea6a";
+}
+.icon-nurse:before {
+  content: "\ea6b";
+}
+.icon-nutrition:before {
+  content: "\ea6c";
+}
+.icon-O:before {
+  content: "\ea6d";
+}
+.icon-observation:before {
+  content: "\ea6e";
+}
+.icon-obstetricsmonia:before {
+  content: "\ea6f";
+}
+.icon-odontology:before {
+  content: "\ea70";
+}
+.icon-odontology_implant:before {
+  content: "\ea71";
+}
+.icon-officer:before {
+  content: "\ea72";
+}
+.icon-ok:before {
+  content: "\ea73";
+}
+.icon-old_man:before {
+  content: "\ea74";
+}
+.icon-old_woman:before {
+  content: "\ea75";
+}
+.icon-oncology:before {
+  content: "\ea76";
+}
+.icon-openMRS_logo:before {
+  content: "\ea77";
+}
+.icon-opthalmology:before {
+  content: "\ea78";
+}
+.icon-oral_contraception_pillsx21:before {
+  content: "\ea79";
+}
+.icon-oral_contraception_pillsx28:before {
+  content: "\ea7a";
+}
+.icon-orthopaedics:before {
+  content: "\ea7b";
+}
+.icon-outbreak:before {
+  content: "\ea7c";
+}
+.icon-outpatient:before {
+  content: "\ea7d";
+}
+.icon-outpatient_department:before {
+  content: "\ea7e";
+}
+.icon-overweight:before {
+  content: "\ea7f";
+}
+.icon-oxygen_tank:before {
+  content: "\ea80";
+}
+.icon-P:before {
+  content: "\ea81";
+}
+.icon-palliative-care:before {
+  content: "\ea82";
+}
+.icon-palm_branches_roof:before {
+  content: "\ea83";
+}
+.icon-pancreas:before {
+  content: "\ea84";
+}
+.icon-patient_band:before {
+  content: "\ea85";
+}
+.icon-patient_band_alt:before {
+  content: "\ea86";
+}
+.icon-paved_road:before {
+  content: "\ea87";
+}
+.icon-paved_road_alt:before {
+  content: "\ea88";
+}
+.icon-peace:before {
+  content: "\ea89";
+}
+.icon-pediatric_surgery:before {
+  content: "\ea8a";
+}
+.icon-pediatrics:before {
+  content: "\ea8b";
+}
+.icon-people:before {
+  content: "\ea8c";
+}
+.icon-person:before {
+  content: "\ea8d";
+}
+.icon-pharmacy:before {
+  content: "\ea8e";
+}
+.icon-pharmacy_alt:before {
+  content: "\ea8f";
+}
+.icon-phone:before {
+  content: "\ea90";
+}
+.icon-physical_therapy:before {
+  content: "\ea91";
+}
+.icon-pill_1:before {
+  content: "\ea92";
+}
+.icon-pills_2:before {
+  content: "\ea93";
+}
+.icon-pills_3:before {
+  content: "\ea94";
+}
+.icon-pills_4:before {
+  content: "\ea95";
+}
+.icon-plantation_worker:before {
+  content: "\ea96";
+}
+.icon-plantation_worker_alt:before {
+  content: "\ea97";
+}
+.icon-pneumonia:before {
+  content: "\ea98";
+}
+.icon-poison:before {
+  content: "\ea99";
+}
+.icon-polygon:before {
+  content: "\ea9a";
+}
+.icon-positive:before {
+  content: "\ea9b";
+}
+.icon-ppe_apron:before {
+  content: "\ea9c";
+}
+.icon-ppe_face_mask:before {
+  content: "\ea9d";
+}
+.icon-ppe_face_shield:before {
+  content: "\ea9e";
+}
+.icon-ppe_gloves:before {
+  content: "\ea9f";
+}
+.icon-ppe_goggles:before {
+  content: "\eaa0";
+}
+.icon-ppe_gown:before {
+  content: "\eaa1";
+}
+.icon-ppe_mask_n95:before {
+  content: "\eaa2";
+}
+.icon-ppe_sanitizer:before {
+  content: "\eaa3";
+}
+.icon-ppe_santizer_alt:before {
+  content: "\eaa4";
+}
+.icon-ppe_suit:before {
+  content: "\eaa5";
+}
+.icon-ppe-face-shield-alt:before {
+  content: "\eaa6";
+}
+.icon-ppe-mask:before {
+  content: "\eaa7";
+}
+.icon-pregnant:before {
+  content: "\eaa8";
+}
+.icon-pregnant_32w:before {
+  content: "\eaa9";
+}
+.icon-pregnant_0812w:before {
+  content: "\eaaa";
+}
+.icon-pregnant_2426w:before {
+  content: "\eaab";
+}
+.icon-pregnant_3638w:before {
+  content: "\eaac";
+}
+.icon-prescription_document:before {
+  content: "\eaad";
+}
+.icon-prisoner:before {
+  content: "\eaae";
+}
+.icon-proper_roof:before {
+  content: "\eaaf";
+}
+.icon-provider_fst:before {
+  content: "\eab0";
+}
+.icon-psychology:before {
+  content: "\eab1";
+}
+.icon-pwid:before {
+  content: "\eab2";
+}
+.icon-Q:before {
+  content: "\eab3";
+}
+.icon-question:before {
+  content: "\eab4";
+}
+.icon-question_circle:before {
+  content: "\eab5";
+}
+.icon-question_mark:before {
+  content: "\eab6";
+}
+.icon-question_triangle:before {
+  content: "\eab7";
+}
+.icon-R:before {
+  content: "\eab8";
+}
+.icon-radiology:before {
+  content: "\eab9";
+}
+.icon-rdt_result:before {
+  content: "\eaba";
+}
+.icon-rdt_result_invalid:before {
+  content: "\eabb";
+}
+.icon-rdt_result_mixed:before {
+  content: "\eabc";
+}
+.icon-rdt_result_mixed_invalid:before {
+  content: "\eabd";
+}
+.icon-rdt_result_mixed_invalid_rectangular:before {
+  content: "\eabe";
+}
+.icon-rdt_result_mixed_rectangular:before {
+  content: "\eabf";
+}
+.icon-rdt_result_neg:before {
+  content: "\eac0";
+}
+.icon-rdt_result_neg_invalid:before {
+  content: "\eac1";
+}
+.icon-rdt_result_neg_invalid_rectangular:before {
+  content: "\eac2";
+}
+.icon-rdt_result_neg_rectangular:before {
+  content: "\eac3";
+}
+.icon-rdt_result_no_test:before {
+  content: "\eac4";
+}
+.icon-rdt_result_out_stock:before {
+  content: "\eac5";
+}
+.icon-rdt_result_pf:before {
+  content: "\eac6";
+}
+.icon-rdt_result_pf_invalid:before {
+  content: "\eac7";
+}
+.icon-rdt_result_pf_invalid_rectangular:before {
+  content: "\eac8";
+}
+.icon-rdt_result_pf_rectangular:before {
+  content: "\eac9";
+}
+.icon-rdt_result_positive:before {
+  content: "\eaca";
+}
+.icon-rdt_result_pv:before {
+  content: "\eacb";
+}
+.icon-rdt_result_pv_invalid:before {
+  content: "\eacc";
+}
+.icon-rdt_result_pv_invalid_rectangular:before {
+  content: "\eacd";
+}
+.icon-rdt_result_pv_rectangular:before {
+  content: "\eace";
+}
+.icon-referral:before {
+  content: "\eacf";
+}
+.icon-refused:before {
+  content: "\ead0";
+}
+.icon-register_book:before {
+  content: "\ead1";
+}
+.icon-respirator:before {
+  content: "\ead2";
+}
+.icon-respirology:before {
+  content: "\ead3";
+}
+.icon-rheumatology:before {
+  content: "\ead4";
+}
+.icon-ribbon:before {
+  content: "\ead5";
+}
+.icon-rmnh:before {
+  content: "\ead6";
+}
+.icon-running_water:before {
+  content: "\ead7";
+}
+.icon-running_water_alt:before {
+  content: "\ead8";
+}
+.icon-rupee:before {
+  content: "\ead9";
+}
+.icon-rural_post:before {
+  content: "\eada";
+}
+.icon-rural_post_alt:before {
+  content: "\eadb";
+}
+.icon-rx:before {
+  content: "\eadc";
+}
+.icon-S:before {
+  content: "\eadd";
+}
+.icon-sad:before {
+  content: "\eade";
+}
+.icon-sayana_press:before {
+  content: "\eadf";
+}
+.icon-security_worker:before {
+  content: "\eae0";
+}
+.icon-sexual_reproductive_health:before {
+  content: "\eae1";
+}
+.icon-simple_logo:before {
+  content: "\eae2";
+}
+.icon-skeleton:before {
+  content: "\eae3";
+}
+.icon-skull:before {
+  content: "\eae4";
+}
+.icon-sleepy:before {
+  content: "\eae5";
+}
+.icon-sling:before {
+  content: "\eae6";
+}
+.icon-small_plane:before {
+  content: "\eae7";
+}
+.icon-smoking:before {
+  content: "\eae8";
+}
+.icon-smoking_cessation:before {
+  content: "\eae9";
+}
+.icon-social_distancing:before {
+  content: "\eaea";
+}
+.icon-social_distancing_alt:before {
+  content: "\eaeb";
+}
+.icon-social_work:before {
+  content: "\eaec";
+}
+.icon-sonography:before {
+  content: "\eaed";
+}
+.icon-speech_language_therapy:before {
+  content: "\eaee";
+}
+.icon-sperm:before {
+  content: "\eaef";
+}
+.icon-spine:before {
+  content: "\eaf0";
+}
+.icon-spleen:before {
+  content: "\eaf1";
+}
+.icon-spraying:before {
+  content: "\eaf2";
+}
+.icon-spreadsheets:before {
+  content: "\eaf3";
+}
+.icon-square_large:before {
+  content: "\eaf4";
+}
+.icon-square_medium:before {
+  content: "\eaf5";
+}
+.icon-square_small:before {
+  content: "\eaf6";
+}
+.icon-star_large:before {
+  content: "\eaf7";
+}
+.icon-star_medium:before {
+  content: "\eaf8";
+}
+.icon-star_small:before {
+  content: "\eaf9";
+}
+.icon-stethoscope:before {
+  content: "\eafa";
+}
+.icon-sti:before {
+  content: "\eafb";
+}
+.icon-stock_out:before {
+  content: "\eafc";
+}
+.icon-stomach:before {
+  content: "\eafd";
+}
+.icon-stop:before {
+  content: "\eafe";
+}
+.icon-surgical_sterilization:before {
+  content: "\eaff";
+}
+.icon-sweating:before {
+  content: "\eb00";
+}
+.icon-symptom:before {
+  content: "\eb01";
+}
+.icon-synergist_insecticide_bioassays:before {
+  content: "\eb02";
+}
+.icon-syringe:before {
+  content: "\eb03";
+}
+.icon-syringe-vaccine:before {
+  content: "\eb04";
+}
+.icon-T:before {
+  content: "\eb05";
+}
+.icon-tac:before {
+  content: "\eb06";
+}
+.icon-tally:before {
+  content: "\eb07";
+}
+.icon-tb:before {
+  content: "\eb08";
+}
+.icon-temple:before {
+  content: "\eb09";
+}
+.icon-temple_alt:before {
+  content: "\eb0a";
+}
+.icon-thermometer:before {
+  content: "\eb0b";
+}
+.icon-thermometer_digital:before {
+  content: "\eb0c";
+}
+.icon-tongue:before {
+  content: "\eb0d";
+}
+.icon-tooth:before {
+  content: "\eb0e";
+}
+.icon-transgender:before {
+  content: "\eb0f";
+}
+.icon-traumatism:before {
+  content: "\eb10";
+}
+.icon-travel:before {
+  content: "\eb11";
+}
+.icon-travel_alt:before {
+  content: "\eb12";
+}
+.icon-treated_water:before {
+  content: "\eb13";
+}
+.icon-triangle_large:before {
+  content: "\eb14";
+}
+.icon-triangle_medium:before {
+  content: "\eb15";
+}
+.icon-triangle_small:before {
+  content: "\eb16";
+}
+.icon-truck_driver:before {
+  content: "\eb17";
+}
+.icon-U:before {
+  content: "\eb18";
+}
+.icon-ui_folder:before {
+  content: "\eb19";
+}
+.icon-ui_folder_family:before {
+  content: "\eb1a";
+}
+.icon-ui_menu:before {
+  content: "\eb1b";
+}
+.icon-ui_menu_grid:before {
+  content: "\eb1c";
+}
+.icon-ui_preferences:before {
+  content: "\eb1d";
+}
+.icon-ui_secure:before {
+  content: "\eb1e";
+}
+.icon-ui_settings:before {
+  content: "\eb1f";
+}
+.icon-ui_user_profile:before {
+  content: "\eb20";
+}
+.icon-ui_zoom:before {
+  content: "\eb21";
+}
+.icon-ui_zoom_in:before {
+  content: "\eb22";
+}
+.icon-ui_zoom_out:before {
+  content: "\eb23";
+}
+.icon-umbrella:before {
+  content: "\eb24";
+}
+.icon-un_paved_road:before {
+  content: "\eb25";
+}
+.icon-underweight:before {
+  content: "\eb26";
+}
+.icon-unhealthy_food:before {
+  content: "\eb27";
+}
+.icon-urology:before {
+  content: "\eb28";
+}
+.icon-V:before {
+  content: "\eb29";
+}
+.icon-varicose_vein:before {
+  content: "\eb2a";
+}
+.icon-ventilator:before {
+  content: "\eb2b";
+}
+.icon-ventilator_alt:before {
+  content: "\eb2c";
+}
+.icon-vespa_motorcycle:before {
+  content: "\eb2d";
+}
+.icon-vih:before {
+  content: "\eb2e";
+}
+.icon-village:before {
+  content: "\eb2f";
+}
+.icon-viral_lung_infection:before {
+  content: "\eb30";
+}
+.icon-virus:before {
+  content: "\eb31";
+}
+.icon-virus_alt:before {
+  content: "\eb32";
+}
+.icon-virus_lab_research_syringe:before {
+  content: "\eb33";
+}
+.icon-virus_lab_research_test_tube:before {
+  content: "\eb34";
+}
+.icon-virus_patient:before {
+  content: "\eb35";
+}
+.icon-virus_research_alt:before {
+  content: "\eb36";
+}
+.icon-virus-mutation:before {
+  content: "\eb37";
+}
+.icon-virus-research:before {
+  content: "\eb38";
+}
+.icon-virus-sanitizer-spray:before {
+  content: "\eb39";
+}
+.icon-virus-shield:before {
+  content: "\eb3a";
+}
+.icon-vomiting:before {
+  content: "\eb3b";
+}
+.icon-vomitting:before {
+  content: "\eb3c";
+}
+.icon-W:before {
+  content: "\eb3d";
+}
+.icon-war:before {
+  content: "\eb3e";
+}
+.icon-wash_hands:before {
+  content: "\eb3f";
+}
+.icon-water_sanitation:before {
+  content: "\eb40";
+}
+.icon-water_treatment:before {
+  content: "\eb41";
+}
+.icon-weight:before {
+  content: "\eb42";
+}
+.icon-wheelchair:before {
+  content: "\eb43";
+}
+.icon-wheelchair_alt:before {
+  content: "\eb44";
+}
+.icon-wold_care:before {
+  content: "\eb45";
+}
+.icon-woman:before {
+  content: "\eb46";
+}
+.icon-woozy:before {
+  content: "\eb47";
+}
+.icon-world_care:before {
+  content: "\eb48";
+}
+.icon-X:before {
+  content: "\eb49";
+}
+.icon-xray:before {
+  content: "\eb4a";
+}
+.icon-Y:before {
+  content: "\eb4b";
+}
+.icon-yen:before {
+  content: "\eb4c";
+}
+.icon-yes:before {
+  content: "\eb4d";
+}
+.icon-young_people:before {
+  content: "\eb4e";
+}
+.icon-Z:before {
+  content: "\eb4f";
+}

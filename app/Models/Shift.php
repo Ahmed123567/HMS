@@ -27,6 +27,7 @@ class Shift extends Model
     ];
 
     public function inShiftHours($time) {
-        return getCarbon($time)->between($this->from, $this->to);
+
+        return getCarbon(getCarbon($time)->format("H:i"))->between($this->from, $this->to);
     }
 }
