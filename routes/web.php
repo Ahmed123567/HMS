@@ -118,10 +118,8 @@ Route::middleware('auth')->group(function () {
         Route::view("/account", "front.patient.account")->name("account");
         Route::view("/medical_history", "front.patient.medical_history")->name("medical_history");
         Route::view("/medical_profile", "front.patient.medical_profile")->name("medical_profile");
-        
+      
         Route::get("/appointment", "appointment")->name("appointment");
-       
-
         Route::post("/reserve", "reserve")->name("reserve");
         Route::put("/accountUpdate", "accountUpdate")->name("accountUpdate");
     });
