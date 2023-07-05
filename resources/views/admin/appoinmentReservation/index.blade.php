@@ -98,55 +98,15 @@
             let doctorSelect = document.getElementById("doctor_select");
             let time = document.getElementById("time");
             
-            let resrvationAction = function (event) {  
+            let resrvationAction = function (event) {
                 let reservationDiv = document.getElementById("reservations");   
-                let doctorUrl = '{{route("doctor.json", ":id")}}';
+                let doctorUrl = '{{route("doctor.ajax", ":id")}}';
 
                 doctorUrl = doctorUrl.replace(":id", doctorSelect.value) + `?time=${time.value}`;
 
-                fetch(doctorUrl).then(async response => {
-                    let doctor = await response.json();
-                    let html = `
-                        <h5 class = "pt-3">Doctor Rerservations :</h5>
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-2">Number Of Resrvations : ${doctor.reservatoins.length} </div>
-                                    <div class="col-2">From : ${doctor.shift.from}</div>
-                                    <div class="col-2">To : ${doctor.shift.to} </div>
-                                    <div class="col-6">Avilable Days : ${doctor.shift.days} </div>
-                                </div>
-                            </div>
-                        </div>
-                        <h5>Reservations :</h5>
-                    `;
-                    
-                    if(doctor.reservatoins.length !== 0) {
-
-                        doctor.reservatoins.forEach(resrvation => {
-                            let dateTime = new Date(resrvation.time);
-                            html += `
-                                <div class="card">
-                                    <div class="card-body ">
-                                        <div class="row">
-                                            <div class="col-4">patient : ${resrvation.patient.name} </div>
-                                            <div class="col-4">Time : ${dateTime.getHours()}:${dateTime.getMinutes()}  </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            `;
-                        });
-                        
-                    }else {
-                        html += `
-                            <div style="text-align:center">
-                                No Resrvations In The Selected Day    
-                            </div>
-                        `; 
-                    }
-
-                    reservationDiv.innerHTML = html;
-                    
+                fetch(doctorUrl).then(async function (response)  {
+        
+                    reservationDiv.innerHTML = await response.text();
                 })
                 .catch(err => {
                     console.log(err);
@@ -154,9 +114,9 @@
             }
 
             doctorSelect.addEventListener("change", resrvationAction);
+            
             time.addEventListener("change", resrvationAction);
             
-
             const departmentSelect = document.getElementById("deparmtent_select");
 
             departmentSelect.addEventListener("change", event => {
@@ -168,9 +128,7 @@
                 const targetSelect = document.querySelector(event.target.dataset.target);
 
                 fetch(url).then( async function(res) {
-                    
-                    const html = await res.text();
-                    targetSelect.innerHTML = html;
+                    targetSelect.innerHTML = await res.text();
                 });
             });
 

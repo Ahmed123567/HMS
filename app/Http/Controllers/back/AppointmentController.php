@@ -32,7 +32,18 @@ class AppointmentController extends Controller
     }
 
 
-    public function doctorJson(Employee $doctor)
+    public function doctorAjax(Employee $doctor)
+    {
+
+        $doctor->load(["reservatoins" => function ($q) {
+            return $q->AtDay(request("time", now()))->orderBy("time");
+        }, "reservatoins.patient", "shift"]);
+        
+        return view("admin.appoinmentReservation.doctorsResrvations", compact("doctor"));
+    }
+
+
+    public function doctorPatientViewAjax(Employee $doctor)
     {
 
         $doctor->load(["reservatoins" => function ($q) {
@@ -40,6 +51,8 @@ class AppointmentController extends Controller
         }, "reservatoins.patient", "shift"]);
         
         return $doctor;
+
+        return view("admin.appoinmentReservation.doctorReservationsPatienView", compact("doctor"));
     }
 
 

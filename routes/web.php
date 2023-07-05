@@ -98,7 +98,7 @@ Route::middleware('auth')->group(function () {
    
 
     Route::get("DepartmentDoctors/{department}", [DepartmentController::class, "deprtmentDoctors"])->name("deparmtent.doctors");
-    Route::get("doctorJson/{doctor}", [AppointmentController::class, "doctorJson"])->name("doctor.json");
+    Route::get("doctorAjax/{doctor}", [AppointmentController::class, "doctorAjax"])->name("doctor.ajax");
     Route::get("doctor/patients/{doctor}", [DoctorController::class, "patients"])->name("doctor.patients");
     Route::get("patient/medicalProfile/{patient}", [PatientController::class, "medicalProfile"])->name("patient.medicalProfile");
     Route::get("patient/medicalHistory/{patient}", [PatientController::class, "medicalHistory"])->name("patient.medicalHistory");
@@ -119,11 +119,13 @@ Route::middleware('auth')->group(function () {
         Route::view("/medical_history", "front.patient.medical_history")->name("medical_history");
         Route::view("/medical_profile", "front.patient.medical_profile")->name("medical_profile");
       
+        
         Route::get("/appointment", "appointment")->name("appointment");
         Route::post("/reserve", "reserve")->name("reserve");
         Route::put("/accountUpdate", "accountUpdate")->name("accountUpdate");
     });
-
+    
+    Route::get("doctorPatientViewAjax/{doctor}", [AppointmentController::class, "doctorPatientViewAjax"])->name("doctor.patientView.ajax");
     
 });
 
