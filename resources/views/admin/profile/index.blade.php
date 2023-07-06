@@ -85,9 +85,11 @@
                                     </div>
                                 </div>
                                 <hr>
-                                <div class="row">
+                                <div class="row text-right">
                                     <div class="col-sm-12">
-                                        <button class="btn btn-info">Save</button>
+                                        <button class="btn btn-primary button-icon">
+                                        <i class="fa fa-save me-2"></i>
+                                        Save</button>
                                     </div>
                                 </div>
                             </div>

@@ -80,9 +80,12 @@
 
                            
                         </div>
-                        <button type="submit" class="btn btn-primary">
+                        <div class="text-right">
+                        <button type="submit" class="btn btn-primary button-icon">
+                        <i class="fe fe-check-square me-2"></i>
                             Reserve
                         </button>
+                        </div>
                     </form>
 
                     <div class="reservations" id="reservations">

@@ -74,7 +74,7 @@
 							<form method="POST" action="{{ route('logout') }}">
 								@csrf
 			
-								<a class="" style="cursor: pointer" onclick="event.preventDefault();this.closest('form').submit();"><i class="bx bx-log-out"></i> Logout</a>
+								<a class="btn btn-outline-dark btn-sm primary text" style="cursor: pointer" onclick="event.preventDefault();this.closest('form').submit();"><i class="ion-ios-log-out"></i> Logout</a>
 								
 							</form>
                         </li>
@@ -147,7 +147,7 @@
                     Copyright &copy;
                     <script>
                         document.write(new Date().getFullYear());
-                    </script> All rights reserved | This template is made with <i class="icon-heart"
+                    </script> All rights reserved | This Project is made with <i class="icon-heart"
                         aria-hidden="true"></i> by
                     <a href="" target="_blank">Elregala</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->

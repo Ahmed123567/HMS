@@ -16,6 +16,8 @@ use App\Http\Controllers\back\RoleController;
 use App\Http\Controllers\back\RomeController;
 use App\Http\Controllers\back\ShiftController;
 use App\Http\Controllers\back\UserController;
+use App\Http\Controllers\back\LabController;
+
 use App\Http\Controllers\front\PatientViewController;
 use App\Models\Patient;
 use App\Models\Permission;
@@ -49,7 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::resource("room", RomeController::class)->except("show");
     Route::resource("patient", PatientController::class)->except("show");
     Route::resource("attendance", AttendanceEmployeeController::class)->only("index", "create", "store");
-    
+
 
     Route::prefix("appointmentResrvation")->as("appointment.reserve.")->controller(AppointmentController::class)->group(function() {
         Route::get("/", "index")->name("index");
@@ -91,11 +93,11 @@ Route::middleware('auth')->group(function () {
     Route::prefix("employee")->as("employee.")->controller(EmployeeController::class)->group(function () {
         Route::get("employeeOrPatients/{role}", "getPeople")->name("employeeOrPatient");
     });
-    
+
     Route::prefix("appointment")->as("appointment.")->controller(RomeController::class)->group(function() {
         Route::get("resrvations/{room}", "resrvation")->name("resrvation");
     });
-   
+
 
     Route::get("DepartmentDoctors/{department}", [DepartmentController::class, "deprtmentDoctors"])->name("deparmtent.doctors");
     Route::get("doctorJson/{doctor}", [AppointmentController::class, "doctorJson"])->name("doctor.json");
@@ -105,26 +107,48 @@ Route::middleware('auth')->group(function () {
     Route::put("patient/updateHistory/{patient}", [PatientController::class, "updateHistory"])->name("patient.updateHistory");
     Route::get("patient/files/{record}", [PatientController::class, "files"])->name("patient.files");
     Route::get("/profile", [ProfileController::class, "index"])->name("admin.profile.index");
-    
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
+
+    // lab front end
+
+    Route::get("/analysis", [LabController::class, "analysis"]);
+    Route::post("/StoreLab" , [LabController::class ,"store"]);
+    Route::post("/Storelab2" , [LabController::class ,"store2"]);
+
+
+     // store the attachment
+    Route::post("/StoreAttachment/{id}" , [LabController::class ,"storeAttachment"]);
+
+
+    // fetch Patient Name Through its ID
+    Route::get("/fetch-patient-name/{id}", [LabController::class, "fetchName"]);
+
+             // Mark All Messages as read
+    Route::get('MarkAsRead_all',[LabController::class,'MarkAsRead_all'])->name('MarkAsRead_all');
+
+
+    // Route::resource("/Lab", LabController::class);
+
+
     // patient front end
 
-    Route::prefix("patient/view")->as("patient.view.")->controller(PatientViewController::class)->group(function () { 
+    Route::prefix("patient/view")->as("patient.view.")->controller(PatientViewController::class)->group(function () {
         Route::view("/", "front.patient.index")->name("index");
         Route::view("/account", "front.patient.account")->name("account");
         Route::view("/medical_history", "front.patient.medical_history")->name("medical_history");
         Route::view("/medical_profile", "front.patient.medical_profile")->name("medical_profile");
-      
+
         Route::get("/appointment", "appointment")->name("appointment");
         Route::post("/reserve", "reserve")->name("reserve");
         Route::put("/accountUpdate", "accountUpdate")->name("accountUpdate");
     });
 
-    
+
 });
 
 require __DIR__.'/auth.php';

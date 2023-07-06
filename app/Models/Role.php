@@ -14,6 +14,7 @@ class Role extends Model
     public const ADMIN = "admin";
     public const DOCTOR = "doctor";
     public const PATIENT = "patient";
+    public const LAB_ANALYST = "LabAnalyst";
 
     protected $fillable = [
         "name"
