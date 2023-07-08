@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form class="validate" action="{{route("room.reserve.store")}}" method="post">
+                    <form action="{{ route('room.reserve.store') }}" method="post">
                         @csrf
                         <div class="row">
 
@@ -43,7 +43,11 @@
                                     @endforeach
                                 </select>
 
+                                @error('room_id')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
+
 
                             <div class="form-group col-3">
                                 <label for="">Patient</label>
@@ -53,16 +57,34 @@
                                         <option value="{{ $patient->id }}">{{ $patient->name }}</option>
                                     @endforeach
                                 </select>
+
+                                @error('patient_id')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
+
 
                             <div class="form-group col-3">
                                 <label for="">From</label>
-                                <input type="date" min="{{now()->format("Y-m-d")}}" value="{{request("from", now()->format("Y-m-d"))}}" name="from" id="from" class="form-control">
+                                <input type="date" min="{{ now()->format('Y-m-d') }}"
+                                    value="{{ request('from', now()->format('Y-m-d')) }}" name="from" id="from"
+                                    class="form-control">
+
+                                @error('from')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
+
 
                             <div class="form-group col-3">
                                 <label for="">To</label>
-                                <input type="date" min="{{now()->format("Y-m-d")}}" value="{{request("to", now()->format("Y-m-d"))}}" name="to" id="to" class="form-control">
+                                <input type="date" min="{{ now()->format('Y-m-d') }}"
+                                    value="{{ request('to', now()->format('Y-m-d')) }}" name="to" id="to"
+                                    class="form-control">
+
+                                @error('to')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                         </div>
@@ -72,7 +94,7 @@
                     </form>
 
                     <div class="reservations" id="reservations">
-                       
+
                     </div>
                 </div>
             </div>
@@ -81,73 +103,22 @@
     @endsection
     @push('js')
         <script>
-            let roomSelect = document.getElementById("room_select");
-            let from = document.getElementById("from");
-            let to  = document.getElementById("to");
-            
-            let resrvationAction = function (event) {  
-                let reservationDiv = document.getElementById("reservations");   
-                let roomUrl = '{{route("room.json", ":id")}}';
+            const roomSelect = document.getElementById("room_select");
+            const from = document.getElementById("from");
+            const to = document.getElementById("to");
+            const resrvationAction = event => {
 
-                roomUrl = roomUrl.replace(":id", roomSelect.value) + `?from=${from.value}&to=${to.value}`;
+                const roomUrl = urlFor(`{{ route('room.ajax', ':id') }}?from=${from.value}&to=${to.value}`, {
+                    id: roomSelect.value
+                });
 
                 fetch(roomUrl).then(async response => {
-                    let room = await response.json();
-                    let html = `
-                        <h5 class = "pt-3">Room Informations :</h5>
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-3">Room Beds : ${room.number_of_beds}</div>
-                                    <div class="col-3">Avilable Beds : ${room.avilable_beds}</div>
-                                    <div class="col-3">Total Price : ${room.total_price}</div>
-                                    <div class="col-3">
-                                        ${room.is_special == 1 ? `<span class="badge bg-success text-white">Special</span>` : `<span class="badge bg-danger text-white">Not Special</span>`}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <h5>Reservations :</h5>
-                    `;
-
-                    if(room.reservatoins.length !== 0) {
-
-                        room.reservatoins.forEach(resrvation => {
-                            html += `
-                                <div class="card">
-                                    <div class="card-body ">
-                                        <div class="row">
-                                            <div class="col-3">patient : ${resrvation.patient.name}</div>
-                                            <div class="col-3">from : ${resrvation.from}</div>
-                                            <div class="col-3">to : ${resrvation.to}</div>
-                                            <div class="col-3">     
-                                               ${resrvation.is_confirmed == 1 ? `<span class="badge bg-success text-white">Confirmed</span>` : `<span class="badge bg-danger text-white">Not Confirmed</span>`}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            `;
-                        });
-                        
-                    }else {
-                        html += `
-                            <div style="text-align:center">
-                                No Resrvations In The Selected Period    
-                            </div>
-                        `; 
-                    }
-
-                    reservationDiv.innerHTML = html;
-                    
-                })
-                .catch(err => {
-                    console.log(err);
-                })
+                    document.getElementById("reservations").innerHTML = await response.text();
+                });
             }
 
             roomSelect.addEventListener("change", resrvationAction);
             from.addEventListener("change", resrvationAction);
             to.addEventListener("change", resrvationAction);
-            
         </script>
     @endpush

@@ -46,8 +46,8 @@ class RomeController extends Controller
      */
     public function update(UpdateRoomRequest $request, Room $room)
     {
+        
         $room->update($request->validated());
-
         return back()->with("success", "room updated successfully");
     }
 
@@ -61,24 +61,19 @@ class RomeController extends Controller
     }
 
 
-    public function roomJson(Room $room) {
+    public function roomAjax(Room $room) {
     
         $room->load(["reservatoins" => function(Builder $q) {
             return $q->overlap(request("from", now()), request("to", now()))->notExpired()->orderBy("from");
         } , "reservatoins.patient"]);
 
-        $room->avilable_beds = $room->avilableBeds(request("from", now()), request("to", now()));
-
-        $room->total_price = $room->priceInPeriod(request("from", now()), request("to", now()));
-
-        return $room;
+        return view("admin.room.roomsAjaxHtml", compact("room"));
     }
 
 
     public function showResrvations(Room $room) {
 
         $resrvaions = $room->reservatoins()->with("patient")->orderBy("from")->get();
-
         return view("admin.room.resrvations", compact("resrvaions", "room"));
     }
 

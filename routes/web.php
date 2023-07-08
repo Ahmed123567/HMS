@@ -79,7 +79,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::prefix("room")->as("room.")->controller(RomeController::class)->group(function() {
-        Route::get("json/{room}", "roomJson")->name("json");
+        Route::get("ajax/{room}", "roomAjax")->name("ajax");
         Route::get("resrvations/{room}", "showResrvations")->name("showResrvations");
     });
 

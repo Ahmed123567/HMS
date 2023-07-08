@@ -39,142 +39,149 @@
     <!-- /Loader -->
     @if (auth()->user()->isDoctor())
         <div>
-    @else
-        @include('layouts.main-sidebar')
-        <div class="main-content app-content">
+        @else
+            @include('layouts.main-sidebar')
+            <div class="main-content app-content">
     @endif
     <!-- main-content -->
-        @include('layouts.main-header')
-        <!-- container -->
-        <div class="container-fluid">
+    @include('layouts.main-header')
+    <!-- container -->
+    <div class="container-fluid">
 
 
-            @yield('page-header')
+        @yield('page-header')
 
-            @if (session()->has('error'))
-                <div class="alert-danger alert">
-                    {{ session('error') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @endif
+        @if (session()->has('error'))
+            <div class="alert-danger alert">
+                {{ session('error') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
 
-            @if (session()->has('success'))
-                <div class="alert-success alert">
-                    {{ session('success') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @endif
+        @if (session()->has('success'))
+            <div class="alert-success alert">
+                {{ session('success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
 
-            @yield('content')
-
-
-            <div class="modal fade" id="global_modal">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div id="global_modal_content" class="modal-content modal-content-demo">
+        @yield('content')
 
 
-                    </div>
+        <div class="modal fade" id="global_modal">
+            <div class="modal-dialog modal-lg" role="document">
+                <div id="global_modal_content" class="modal-content modal-content-demo">
+
+
                 </div>
             </div>
+        </div>
 
-            @include('layouts.sidebar')
-            {{-- @include('layouts.footer') --}}
-            @include('layouts.footer-scripts')
+        @include('layouts.sidebar')
+        {{-- @include('layouts.footer') --}}
+        @include('layouts.footer-scripts')
 
-            <script src="{{asset("assets/js/sweetalert2/dist/sweetalert2.all.min.js")}}" ></script>
-            <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script src="{{ asset('assets/js/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 
-            <script>
-                $(".modal_btn").on("click", function() {
-                    let url = this.dataset.url;
-                    let title = this.dataset.title;
-                    let modal_header = `
+        <script>
+            $(".modal_btn").on("click", function() {
+                let url = this.dataset.url;
+                let title = this.dataset.title;
+                let modal_header = `
 						<div class="modal-header">
 									<h6 class="modal-title">${title}</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
 						</div>
 					`;
 
-                    $.get(url, function(res) {
+                $.get(url, function(res) {
 
-                        let html = modal_header + res;
+                    let html = modal_header + res;
 
-                        $("#global_modal_content").html(html);
+                    $("#global_modal_content").html(html);
 
-                        $("#global_modal").modal()
-                    })
+                    $("#global_modal").modal()
                 })
+            })
 
 
-                let buttons = document.querySelectorAll('.delete_button');
+            let buttons = document.querySelectorAll('.delete_button');
 
-                buttons.forEach(button => {
-                    button.onclick = (e) => {
-                        e.stopPropagation();
-                        e.preventDefault();
-                        let buttonName = e.target.dataset.button_name ?? "Delete";
-                        Swal.fire({
-                            title: "are you sure",
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: buttonName
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                e.target.closest("form").submit()
+            buttons.forEach(button => {
+                button.onclick = (e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    let buttonName = e.target.dataset.button_name ?? "Delete";
+                    Swal.fire({
+                        title: "are you sure",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: buttonName
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            e.target.closest("form").submit()
+                        }
+                    })
+                }
+            });
+
+
+            $(document).ready(function() {
+                $(document).on("submit", ".validate", function(e) {
+                    e.preventDefault()
+                    let form = $(this)
+                    let form_data = new FormData(form[0]);
+
+                    $.ajax({
+                        type: form.attr('method'),
+                        url: form.attr('action'),
+                        data: form_data,
+                        contentType: false,
+                        processData: false,
+                        cache: false,
+                        success: function(data) {
+                            location.reload();
+                        },
+                        error: function(data) {
+
+                            $(".validation-message").hide();
+                            let errors = data.responseJSON.errors;
+                            for (const inputName in errors) {
+
+                                let input = document.querySelector(`[name=${inputName}]`);
+
+                                if (input) {
+                                    let errorMessages = '';
+                                    errors[inputName].forEach(error => {
+                                        errorMessages +=
+                                            `<p class='text-danger validation-message' style="font-size:12px"><span style="font-size:15px">😡</span>${error}</p>`
+                                    });
+                                    input.insertAdjacentHTML("afterend", errorMessages)
+                                }
                             }
-                        })
-                    }
+                        },
+                    });
+                })
+            })
+
+            const urlFor = (route, bind) => {
+
+                Object.keys(bind).forEach(param => {
+                    route = route.replace(":" + param, bind[param])
                 });
 
+                return route;
+            }
+        </script>
 
-                $(document).ready(function() {
-                    $(document).on("submit", ".validate", function(e) {
-                        e.preventDefault()
-                        let form = $(this)
-                        let form_data = new FormData(form[0]);
-
-                        $.ajax({
-                            type: form.attr('method'),
-                            url: form.attr('action'),
-                            data: form_data,
-                            contentType: false,
-                            processData: false,
-                            cache: false,
-                            success: function(data) {
-                                location.reload();
-                            },
-                            error: function(data) {
-
-                                $(".validation-message").hide();
-                                let errors = data.responseJSON.errors;
-                                for (const inputName in errors) {
-
-                                    let input = document.querySelector(`[name=${inputName}]`);
-
-                                    if (input) {
-                                        let errorMessages = '';
-                                        errors[inputName].forEach(error => {
-                                            errorMessages +=
-                                                `<p class='text-danger validation-message' style="font-size:12px"><span style="font-size:15px">😡</span>${error}</p>`
-                                        });
-                                        input.insertAdjacentHTML("afterend", errorMessages)
-                                    }
-                                }
-                            },
-                        });
-                    })
-                })
-
-                console.log($(".select2").select2());
-            </script>
-
-            @stack('js')
+        @stack('js')
 
 </body>
 

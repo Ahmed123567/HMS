@@ -36,7 +36,7 @@ class RoomResrvation extends Model
 
 
     public function isConfirmed() {
-        return $this->is_confirmed == 1 ? true : false;
+        return $this->is_confirmed == 1;
     }
 
     public function isExpired() {

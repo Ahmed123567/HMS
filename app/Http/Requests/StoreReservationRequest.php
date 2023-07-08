@@ -32,17 +32,18 @@ class StoreReservationRequest extends FormRequest
     }
 
     public function reservationIsValid() {
-        $reservationsInSelectedPeriod = RoomResrvation::overlap($this->from, $this->to)
-                                                    ->whereRoomId($this->room_id)
-                                                    ->confirmed()
-                                                    ->count();
 
-        $room = Room::find($this->room_id);
-
-        if($reservationsInSelectedPeriod >= $room->number_of_beds ) {
-            return false;
-        }
-
-        return true;
+        return $this->reservationsInSelectedPeriod() < $this->room()->number_of_beds;
     }
+
+    public function room() {
+        
+        return Room::find($this->room_id);
+    }
+
+    public function reservationsInSelectedPeriod() {
+
+        return $this->room()->reservatoins()->confirmed()->overlap($this->from, $this->to)->count();
+    }
+
 }

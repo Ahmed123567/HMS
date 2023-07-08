@@ -16,14 +16,15 @@ class DepartmentController extends Controller
      */
     public function index()
     {
+        
         $departments = Department::withCount("employees")->with("manager")->get();
         return view("admin.department.index", compact("departments"));
     }
 
     public function create()
     {
+
         $managers = Employee::managers()->pluck("name", "id");
-       
         return view("admin.department.create", compact("managers"));
     }
 
@@ -41,7 +42,6 @@ class DepartmentController extends Controller
     {
 
         $managers = Employee::managers()->pluck("name", "id");
-
         return view("admin.department.edit", compact("department","managers"));   
     }
 
@@ -50,8 +50,8 @@ class DepartmentController extends Controller
      */
     public function update(UpdateDepartmentRequest $request, Department $department)
     {
-        $department->update($request->validated());
 
+        $department->update($request->validated());
         return back()->with("success", "department updated successfully");
     }
 
@@ -67,7 +67,6 @@ class DepartmentController extends Controller
     public function deprtmentDoctors(Department $department) {
 
         $doctors = $department->employees()->doctors()->get();
-
         return view("admin.department.doctors", compact("doctors"));
     }
 
