@@ -32,4 +32,8 @@ class Room extends Model
         [$from, $to] = getCarbon($from, $to);
         return  ($from->diffInDays($to) + 1) * $this->one_night_bed_price;
     }
+
+    public function isSpecial() {
+        return $this->is_special == 1;
+    }
 }

@@ -19,8 +19,11 @@ use App\Http\Controllers\back\UserController;
 use App\Http\Controllers\back\LabController;
 
 use App\Http\Controllers\front\PatientViewController;
+use App\Http\Middleware\isAdmin;
+use App\Http\Middleware\role as MiddlewareRole;
 use App\Models\Patient;
 use App\Models\Permission;
+use App\Models\Role;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,13 +38,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+
+    if(auth()->check() && auth()->user()->isPatient()) {
+        return redirect()->route("patient.view.index");
+    }
     return redirect()->route("login");
-    return view('welcome');
 });
 
 Route::get('/dashboard', DashboardController::class)->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
 
     Route::resource("user", UserController::class)->except("show");
     Route::resource("role", RoleController::class)->except("show");
@@ -62,11 +69,6 @@ Route::middleware('auth')->group(function () {
         Route::post("close/{appointmentResrvation}", "close")->name("close");
     });
 
-    Route::prefix("autoDoctor")->as("autoDoctor.")->controller(AutoDoctorController::class)->group(function () {
-        Route::get("/", "index")->name("index");
-        Route::get("/covid", "covid")->name("covid");
-        Route::post("/covid", "covidCheck")->name("covidCheck");
-    });
 
     Route::prefix("permission")->as("permission.")->controller(PermissionController::class)->group(function () {
         Route::get("/", "index")->name("index");
@@ -81,7 +83,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::prefix("room")->as("room.")->controller(RomeController::class)->group(function() {
-        Route::get("json/{room}", "roomJson")->name("json");
+        Route::get("ajax/{room}", "roomAjax")->name("ajax");
         Route::get("resrvations/{room}", "showResrvations")->name("showResrvations");
     });
 
@@ -100,12 +102,6 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get("DepartmentDoctors/{department}", [DepartmentController::class, "deprtmentDoctors"])->name("deparmtent.doctors");
-    Route::get("doctorAjax/{doctor}", [AppointmentController::class, "doctorAjax"])->name("doctor.ajax");
-    Route::get("doctor/patients/{doctor}", [DoctorController::class, "patients"])->name("doctor.patients");
-    Route::get("patient/medicalProfile/{patient}", [PatientController::class, "medicalProfile"])->name("patient.medicalProfile");
-    Route::get("patient/medicalHistory/{patient}", [PatientController::class, "medicalHistory"])->name("patient.medicalHistory");
-    Route::put("patient/updateHistory/{patient}", [PatientController::class, "updateHistory"])->name("patient.updateHistory");
-    Route::get("patient/files/{record}", [PatientController::class, "files"])->name("patient.files");
     Route::get("/profile", [ProfileController::class, "index"])->name("admin.profile.index");
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -115,6 +111,7 @@ Route::middleware('auth')->group(function () {
 
 
     // lab front end
+
 
     Route::get("/analysis", [LabController::class, "analysis"]);
     Route::post("/StoreLab" , [LabController::class ,"store"]);
@@ -132,8 +129,27 @@ Route::middleware('auth')->group(function () {
     Route::get('MarkAsRead_all',[LabController::class,'MarkAsRead_all'])->name('MarkAsRead_all');
 
 
-    // Route::resource("/Lab", LabController::class);
 
+
+
+    // doctor view
+    Route::prefix("autoDoctor")->as("autoDoctor.")->controller(AutoDoctorController::class)->group(function () {
+        Route::get("/", "index")->name("index");
+        Route::get("/covid", "covid")->name("covid");
+        Route::post("/covid", "covidCheck")->name("covidCheck");
+
+        Route::get("/brainTumor", "brainTumor")->name("brainTumor");
+        Route::post("/brainTumor", "brainTumorCheck")->name("brainTumorCheck");
+    });
+
+
+    Route::get("doctor/patients/{doctor}", [DoctorController::class, "patients"])->name("doctor.patients");
+    Route::get("patient/medicalProfile/{patient}", [PatientController::class, "medicalProfile"])->name("patient.medicalProfile");
+    Route::get("patient/medicalHistory/{patient}", [PatientController::class, "medicalHistory"])->name("patient.medicalHistory");
+    Route::put("patient/updateHistory/{patient}", [PatientController::class, "updateHistory"])->name("patient.updateHistory");
+    Route::get("patient/files/{record}", [PatientController::class, "files"])->name("patient.files");
+    Route::get("doctorAjax/{doctor}", [AppointmentController::class, "doctorAjax"])->name("doctor.ajax");
+   
 
     // patient front end
 

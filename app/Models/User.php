@@ -64,6 +64,10 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, "role_id");
     }
 
+    public function hasRole(...$roles) {
+        return collect($roles)->contains($this->role->name);
+    }
+
     public function assignRole(string|int $role) : void {
         
         if(is_string($role)) {
@@ -112,6 +116,10 @@ class User extends Authenticatable
         return $this->role->name == Role::MANAGER;
     }
 
+    public function isAdmin() {
+        return $this->role->name == Role::ADMIN;
+    }
+
     public function isDoctor() {
         return $this->role->name == Role::DOCTOR;
     }
@@ -125,8 +133,6 @@ class User extends Authenticatable
     }
 
    
-
-
     public function managedDepartment() {
         if( !$this->isManager() ) {
             return null;

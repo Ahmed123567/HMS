@@ -88,42 +88,30 @@
         @endsection
         @push('js')
             <script>
-                let doctorSelect = document.getElementById("doctor_select");
-                let time = document.getElementById("time");
+                const doctorSelect = document.getElementById("doctor_select");
+                const time = document.getElementById("time");
+                const departmentSelect = document.getElementById("deparmtent_select");
+                
+                const resrvationAction = event => {
 
-                let resrvationAction = function(event) {
-                    let reservationDiv = document.getElementById("reservations");
-                    let doctorUrl = '{{ route('doctor.patientView.ajax', ':id') }}';
+                    const doctorUrl = urlFor(`{{ route('doctor.patientView.ajax', ':id') }}?time=${time.value}`, {id : doctorSelect.value});
+                    
+                    fetch(doctorUrl).then(async function(response) {
+                        document.getElementById("reservations").innerHTML = await response.text();
+                    });
+                }
 
-                    doctorUrl = doctorUrl.replace(":id", doctorSelect.value) + `?time=${time.value}`;
+                const changeDepartmentAction = event => {
 
-                    fetch(doctorUrl).then(async function(response)  {
+                    const url = urlFor("{{ route('deparmtent.doctors', ':id') }}", { id: event.target.value })
 
-                        reservationDiv.innerHTML = await response.text();
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
+                    fetch(url).then(async function(response) {
+                        document.querySelector(event.target.dataset.target).innerHTML = await response.text();
+                    });
                 }
 
                 doctorSelect.addEventListener("change", resrvationAction);
-
                 time.addEventListener("change", resrvationAction);
-
-                const departmentSelect = document.getElementById("deparmtent_select");
-
-                departmentSelect.addEventListener("change", event => {
-
-                    let url = "{{ route('deparmtent.doctors', ':id') }}";
-
-                    url = url.replace(":id", event.target.value);
-
-                    const targetSelect = document.querySelector(event.target.dataset.target);
-
-                    fetch(url).then(async function(res) {
-                        targetSelect.innerHTML = await res.text();
-                    });
-
-                });
+                departmentSelect.addEventListener("change", changeDepartmentAction);
             </script>
         @endpush

@@ -71,12 +71,14 @@
                     <ul class="navbar-nav ml-auto">
 
                         <li class="nav-item">
-							<form method="POST" action="{{ route('logout') }}">
-								@csrf
-			
-								<a class="btn btn-outline-dark btn-sm primary text" style="cursor: pointer" onclick="event.preventDefault();this.closest('form').submit();"><i class="ion-ios-log-out"></i> Logout</a>
-								
-							</form>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <a class="" style="cursor: pointer"
+                                    onclick="event.preventDefault();this.closest('form').submit();"><i
+                                        class="bx bx-log-out"></i> Logout</a>
+
+                            </form>
                         </li>
                     </ul>
 
@@ -202,6 +204,15 @@
                 $("#global_modal").modal()
             })
         })
+
+        const urlFor = (route, bind) => {
+
+            Object.keys(bind).forEach(param => {
+                route = route.replace(":" + param, bind[param])
+            });
+
+            return route;
+        }
     </script>
 
     @stack('js')

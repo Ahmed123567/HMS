@@ -38,6 +38,7 @@ class AppointmentController extends Controller
         $doctor->load(["reservatoins" => function ($q) {
             return $q->AtDay(request("time", now()))->orderBy("time");
         }, "reservatoins.patient", "shift"]);
+
         
         return view("admin.appoinmentReservation.doctorsResrvations", compact("doctor"));
     }
@@ -50,8 +51,6 @@ class AppointmentController extends Controller
             return $q->AtDay(request("time", now()))->orderBy("time");
         }, "reservatoins.patient", "shift"]);
         
-        return $doctor;
-
         return view("admin.appoinmentReservation.doctorReservationsPatienView", compact("doctor"));
     }
 

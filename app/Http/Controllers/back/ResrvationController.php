@@ -27,6 +27,7 @@ class ResrvationController extends Controller
         }
         
         RoomResrvation::create($requset->validated());
+        
         return back()->with("success", "room reservation stored successfully");
     }
 

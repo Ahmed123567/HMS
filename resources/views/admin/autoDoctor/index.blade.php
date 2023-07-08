@@ -48,8 +48,8 @@
                             <h4 class="card-title mb-3">Brain Tumor</h4>
                             <p class="card-text">Accuracy: <span class="badge badge-success">92%</span></p>
                             <div class="btn btn-primary btn-rounded ">
-                                <a data-url="{{ route("autoDoctor.covid") }}" style="cursor: pointer"
-                                    data-title="Covid Check" class="modal_btn"><i class="fa fa-upload"></i></a>
+                                <a data-url="{{ route("autoDoctor.brainTumor") }}" style="cursor: pointer"
+                                    data-title="Brain Tumor Check" class="modal_btn"><i class="fa fa-upload"></i></a>
                             </div>
                         </div>
                     </div>
@@ -69,55 +69,47 @@
                 </div>
             </div>
         </div>
-    </div>
-
-
-
-
-
-
     @endsection
 
-    @push("js")
-    <script>
-    $(document).on("submit", "#covid_form", function(e) {
+    @push('js')
+        <script>
+            $(document).on("submit", "#covid_form", function(e) {
 
-        e.preventDefault()
+                e.preventDefault()
 
-        let form = $(this)
-        let form_data = new FormData(form[0]);
+                let form = $(this)
+                let form_data = new FormData(form[0]);
 
-        if (resultElement = document.querySelector(".covid_result")) {
-            resultElement.remove();
-        }
+                if (resultElement = document.querySelector(".covid_result")) {
+                    resultElement.remove();
+                }
 
-        const spinner = document.getElementById('spinner');
+                const spinner = document.getElementById('spinner');
 
-        spinner.style.display = "block";
+                spinner.style.display = "block";
 
-        $.ajax({
-            type: form.attr('method'),
-            url: form.attr('action'),
-            data: form_data,
-            contentType: false,
-            processData: false,
-            cache: false,
-            success: function(data) {
-                console.log(1);
-                spinner.style.display = "none";
-                document.querySelector(".modal-body").insertAdjacentHTML('beforeend', data);
-            },
-            error: function(err) {
-                spinner.style.display = "none";
-                document.querySelector(".modal-body").insertAdjacentHTML('beforeend',
-                    `<p class='text-danger text-center covid_result'> 
+                $.ajax({
+                    type: form.attr('method'),
+                    url: form.attr('action'),
+                    data: form_data,
+                    contentType: false,
+                    processData: false,
+                    cache: false,
+                    success: function(data) {
+                        console.log(1);
+                        spinner.style.display = "none";
+                        document.querySelector(".modal-body").insertAdjacentHTML('beforeend', data);
+                    },
+                    error: function(err) {
+                        spinner.style.display = "none";
+                        document.querySelector(".modal-body").insertAdjacentHTML('beforeend',
+                            `<p class='text-danger text-center covid_result'> 
                         Error has been occure please check you uploaded image
                     <p>
                     `);
-            }
+                    }
 
-        })
-    })
-    </script>
-
+                })
+            })
+        </script>
     @endpush

@@ -16,8 +16,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::with("permissions:name")->get();
 
+        $roles = Role::with("permissions:name")->get();
         return view("admin.role.index", compact("roles"));
     }
 
@@ -26,6 +26,7 @@ class RoleController extends Controller
      */
     public function create()
     {
+       
         return view("admin.role.create");
     }
 
@@ -38,8 +39,6 @@ class RoleController extends Controller
             $role = Role::create($request->only("name"));
             $role->assignPermissionIds($request->get("permissions") ?? []);
         });
-
-        toast()->success('role created successfully')->push();
         
         return back()->with("success", "role created successfully");
     }
@@ -73,7 +72,6 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $role->delete();
-
         return back()->with("success", "role deleted successfully");
     }
 }
