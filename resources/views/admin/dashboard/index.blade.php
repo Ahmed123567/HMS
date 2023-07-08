@@ -14,6 +14,9 @@
                     @if (auth()->user()->isDoctor())
                         @include('admin.dashboard.doctorDashboard')
                     @endif
+                    @if (auth()->user()->isLabAnalyst())
+                        @include('admin.dashboard.labDashboard')
+                    @endif
                 </div>
             </div>
         </div>

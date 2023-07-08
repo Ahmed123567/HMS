@@ -585,7 +585,8 @@ slide is-expanded side-menu__item {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  font-size: 20px;
+  /* bug */
+  font-size: 15px;
   color: #0162e8;
 }
 
@@ -670,14 +671,14 @@ slide is-expanded side-menu__item {
 /*modified*/
 .side-menu .side-menu__icon {
   
-  /* position: relative; */
-  /* display: -webkit-box; */
-  /* display: -ms-flexbox; */
-  /* display: flex; */
-  /* -webkit-box-align: center; */
-  /* -ms-flex-align: center; */
-  /* align-items: center; */
-  font-size: 20px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 15px;
   line-height: 0;
   margin-right: 14px;
   width: 22px;
@@ -687,6 +688,7 @@ slide is-expanded side-menu__item {
   text-align: center;
   color: #a8b1c7;
   fill: #5b6e88;
+  /* bug */
 }
 
 .side-menu__icon {
@@ -891,11 +893,12 @@ slide is-expanded side-menu__item {
     box-shadow: 0px 8px 17px rgba(0, 0, 0, 0.2);
   }
   .app.sidenav-toggled .side-menu__item {
-    display: block;
-    padding: 8px 0 9px 0;
+    /* display: block; */
+    /* padding: 8px 0 9px 0; */
     margin: 0 auto;
     text-align: center;
     border-left: 0;
+    /* bug */
   }
   .app.sidenav-toggled .side-menu_label {
     display: block;
@@ -927,8 +930,9 @@ slide is-expanded side-menu__item {
 }
 
 .app.sidenav-toggled .side-menu .side-menu__icon {
-  margin-right: 0;
-  margin-left: 0;
+  margin-right: 0px;
+  margin-left: 0px;
+  /* bug */
 }
 
 .app .side-menu_label {

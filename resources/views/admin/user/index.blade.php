@@ -31,10 +31,10 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table text-md-nowrap" id="example1">
+                        <table class="table text-md-nowrap" id="example1" style="vertical-align: middle;">
                             <thead>
                                 <tr>
-                                    <th style="width:10%">Profile Photo</th>
+                                    <th style="width:5%">Photo</th>
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone Number</th>
@@ -43,13 +43,13 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="vertical-align: middle;">
 
                                 @foreach ($users as $user)
                                     <tr>
-                                        <td><img onerror="this.src = '{{ asset('storage/images/default.jpg') }}'" style="width: 100%; height:50px"
-                                                src="{{ asset('storage/images/' . $user->image ?? "default.jpg" ) }}" alt=""></td>
-                                        <td>{{ $user->name }}</td>
+                                        <td><img onerror="this.src = '{{ asset('storage/images/default.jpg') }}'" style="width: 100%;"
+                                                src="{{ asset('storage/images/' . $user->image ?? "default.jpg" ) }}" class="rounded-circle"></td>
+                                        <td >{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->phone_number ?? '-' }}</td>
                                         <td>{{ $user->role?->name ?? '-' }}</td>

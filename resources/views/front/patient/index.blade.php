@@ -4,7 +4,6 @@
 @section("content")
 <div class="container">
     <div class="row">
-        <div class="col-md-2"></div>
         <div class="col-md-4 mb-4 mb-md-0">
             <div class="card card-style text-center">
                 <h1 class="card-header py-4">
@@ -41,9 +40,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-2"></div>
-
-        {{-- <div class="col-md-4 mb-4 mb-md-0">
+        <div class="col-md-4 mb-4 mb-md-0">
             <div class="card card-style text-center">
                 <h1 class="card-header py-4">
                     <i class="ion-ios-chatbubbles "></i>
@@ -56,11 +53,11 @@
                     
                 </div>
                 <div class="card-footer text-muted">
-                    <a href="./Chat.html" class="btn btn-primary" style="background-color:#00b4ff;
+                    <a href="{{url('chat')}}" class="btn btn-primary" style="background-color:#00b4ff;
                     border-color: #00b4ff;">Open</a>
                 </div>
             </div>
-        </div> --}}
+        </div>
     </div>
 </div>
 

@@ -3,18 +3,19 @@
 
 @section("content")
 <div class="container">
-    <div class="card">
+    <div class="card shadow">
 
         <div class="card-body pb-3">
             <div class="row text-center">
                 <div class="col-6">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-6 ">
                             <img  style="border-radius: 10px;" width="120"
-                                src="{{ asset( auth()->user()->imageUrl() ?? defaultImage()) }}" alt="">
+                                src="{{ asset( auth()->user()->imageUrl() ?? defaultImage()) }}" alt=""
+                                class="rounded-circle img-raised rounded-circle thumbnail img-fluid image">
                         </div>
                         <div class="col-6 text-left">
-                            <input class="form-control "  style="background: #ffffff" disabled type="text" value="Name : {{auth()->user()->patient?->name}}">
+                            <input class="form-control form-control-shadow "  style="background: #ffffff" disabled type="text" value="Name : {{auth()->user()->patient?->name}}">
                             <input class="form-control mt-2" style="background: #ffffff" disabled type="text" value="Age : {{now()->diffInYears(auth()->user()->patient?->date_of_birth)}}">
                             <input class="form-control mt-2" style="background: #ffffff" disabled type="text" value="Gender : {{ auth()->user()->patient?->gender() }}">
                         </div>
@@ -33,7 +34,7 @@
 
     <div class="row row-sm">
         <div class="col-xl-12">
-            <div class="card">
+            <div class="card shadow">
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between">
                         <h4 class="card-title mg-b-0">Medical Records</h4>

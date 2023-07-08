@@ -76,4 +76,7 @@ class PatientController extends Controller
             $record->files->map(fn ($file) => storage_path("app\\" . $file))->flip()->toArray()
         );
     }
+
+
+ 
 }
