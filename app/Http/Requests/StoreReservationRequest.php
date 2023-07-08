@@ -37,7 +37,7 @@ class StoreReservationRequest extends FormRequest
     }
 
     public function room() {
-        
+    
         return Room::find($this->room_id);
     }
 

@@ -6,6 +6,7 @@ import pathlib
 import shutil
 from covid import ai
 from helper import cleanFolder
+from BrainTumor import checkHasBrainTumor
 
 app = Flask(__name__)
 
@@ -29,7 +30,18 @@ class Covid(Resource):
         )} 
 
 
+class BrainTumer(Resource):
+    
+    def post(self): 
+        cleanFolder(UPLOAD_FOLD)
+        request.files["file"].save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(request.files["file"].filename)))
+        return {"result" : checkHasBrainTumor(
+            "./pic"
+        )} 
+
+
 api.add_resource(Covid, "/covid")
+api.add_resource(BrainTumer, "/brainTumor")
 
 app.run(debug = True);
 

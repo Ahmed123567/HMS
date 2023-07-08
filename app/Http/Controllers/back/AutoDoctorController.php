@@ -41,4 +41,20 @@ class AutoDoctorController extends Controller
             <p class="text-success text-center covid_result" > the result is ` {$result->json()['result']} `</p>
         html;
     }
+
+
+    public function brainTumor() {
+        return view("admin.autoDoctor.brainTumor");
+    }
+
+    public function brainTumorCheck(CovidCheckRequest $req) {
+                    
+        $result = Http::flask()
+                        ->attach('file', file_get_contents($req->image), 'sample.' . $req->image->extension())
+                        ->post("brainTumor");
+        
+        return <<<html
+            <p class="text-success text-center covid_result" > the result is ` {$result->json()['result']} `</p>
+        html;
+    }
 }

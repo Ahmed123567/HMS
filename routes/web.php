@@ -64,6 +64,9 @@ Route::middleware('auth')->group(function () {
         Route::get("/", "index")->name("index");
         Route::get("/covid", "covid")->name("covid");
         Route::post("/covid", "covidCheck")->name("covidCheck");
+
+        Route::get("/brainTumor", "brainTumor")->name("brainTumor");
+        Route::post("/brainTumor", "brainTumorCheck")->name("brainTumorCheck");
     });
 
     Route::prefix("permission")->as("permission.")->controller(PermissionController::class)->group(function () {
