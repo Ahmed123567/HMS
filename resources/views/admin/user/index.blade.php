@@ -47,7 +47,7 @@
 
                                 @foreach ($users as $user)
                                     <tr>
-                                        <td><img onerror="this.src = '{{ asset('storage/images/default.jpg') }}'" style="width: 100%;"
+                                        <td><img  style="width: 100%;"
                                                 src="{{ asset('storage/images/' . $user->image ?? "default.jpg" ) }}" class="rounded-circle"></td>
                                         <td >{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>

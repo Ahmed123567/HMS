@@ -101,6 +101,7 @@
             const doctorSelect = document.getElementById("doctor_select");
             const time = document.getElementById("time");
             const departmentSelect = document.getElementById("deparmtent_select");
+          
             const changeDepartmentAction = event => {
 
                 const url = urlFor("{{ route('deparmtent.doctors', ':id') }}", { id: event.target.value })
@@ -114,7 +115,6 @@
              
                 const doctorUrl = urlFor(`{{route("doctor.ajax", ":id")}}?time=${time.value}`, { id: doctorSelect.value });
 
-                console.log(doctorUrl);
                 fetch(doctorUrl).then(async function (response)  {
         
                     document.getElementById("reservations").innerHTML = await response.text();

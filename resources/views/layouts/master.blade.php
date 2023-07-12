@@ -173,7 +173,7 @@
             })
 
             const urlFor = (route, bind) => {
-
+ 
                 Object.keys(bind).forEach(param => {
                     route = route.replace(":" + param, bind[param])
                 });

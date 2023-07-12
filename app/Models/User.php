@@ -113,19 +113,19 @@ class User extends Authenticatable
     }
 
     public function isManager() {
-        return $this->role->name == Role::MANAGER;
+        return Str::lower($this->role->name) == Role::MANAGER;
     }
 
     public function isAdmin() {
-        return $this->role->name == Role::ADMIN;
+        return Str::lower($this->role->name) == Role::ADMIN;
     }
 
     public function isDoctor() {
-        return $this->role->name == Role::DOCTOR;
+        return Str::lower($this->role->name) == Role::DOCTOR;
     }
 
     public function isPatient() {
-        return $this->role->name == Role::PATIENT;
+        return  Str::lower($this->role->name) == Role::PATIENT;
     }
 
     public function isLabAnalyst() {

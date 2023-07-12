@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 
 class Role extends Model
@@ -41,6 +42,6 @@ class Role extends Model
     }
 
     public function isPatient() {
-        return $this->name == static::PATIENT;
+        return Str::lower($this->name)  == static::PATIENT;
     }
 }
