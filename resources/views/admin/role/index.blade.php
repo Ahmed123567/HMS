@@ -51,13 +51,13 @@
                                         </td>
                                         <td class="d-flex">
                                             
-                                            <button type="button"  data-url="{{ route('role.edit', $role->id) }}"
-                                                data-toggle="tooltip" title="Edit Role" data-title="Edit Role"
-                                                class="modal_btn badge btn btn-primary mx-1 ">
-                                                <i class="mdi mdi-pen"></i>
-                                            </button>
-                                            
                                             @if($role->isDeletable())           
+                                                <button type="button"  data-url="{{ route('role.edit', $role->id) }}"
+                                                    data-toggle="tooltip" title="Edit Role" data-title="Edit Role"
+                                                    class="modal_btn badge btn btn-primary mx-1 ">
+                                                    <i class="mdi mdi-pen"></i>
+                                                </button>
+                                            
                                                 <form action="{{ route("role.destroy", $role->id) }}" method="post" class="mx-1">
                                                     @method('delete')
                                                     @csrf
