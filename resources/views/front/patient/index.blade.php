@@ -11,9 +11,7 @@
                 </h1>
                 <div class="card-body">
                     <h5 class="card-title">Medical Records</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional
-                        content. It is a paradisematic country, in which roasted parts of sentences fly into
-                        your mouth.</p>
+                    <p class="card-text">View your medical history including records, prescriptions, and tests results.</p>
                     
                 </div>
                 <div class="card-footer text-muted">
@@ -29,9 +27,7 @@
                 </h1>
                 <div class="card-body">
                     <h5 class="card-title">Appointments</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional
-                        content. It is a paradisematic country, in which roasted parts of sentences fly into
-                        your mouth.</p>
+                    <p class="card-text">Make an appointment with any available doctor during work hours.</p>
                     
                 </div>
                 <div class="card-footer text-muted">
@@ -47,9 +43,7 @@
                 </h1>
                 <div class="card-body">
                     <h5 class="card-title">Chat</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional
-                        content. It is a paradisematic country, in which roasted parts of sentences fly into
-                        your mouth.</p>
+                    <p class="card-text">Chat with your doctors about any inquireis you have, and recieve notices from the system admins.</p>
                     
                 </div>
                 <div class="card-footer text-muted">
