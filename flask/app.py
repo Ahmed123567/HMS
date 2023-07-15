@@ -7,7 +7,7 @@ import shutil
 from covid import ai
 from helper import cleanFolder
 from BrainTumor import checkHasBrainTumor
-from ECG import ecg
+# from ECG import ecg
 app = Flask(__name__)
 
 api = Api(app)
@@ -40,19 +40,19 @@ class BrainTumer(Resource):
         )} 
 
 
-class Ecg(Resource):
+# class Ecg(Resource):
     
-    def post(self): 
-        cleanFolder(UPLOAD_FOLD)
-        request.files["file"].save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(request.files["file"].filename)))
-        return {"result" : checkHasBrainTumor(
-            "./pic"
-        )} 
+#     def post(self): 
+#         cleanFolder(UPLOAD_FOLD)
+#         request.files["file"].save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(request.files["file"].filename)))
+#         return {"result" : checkHasBrainTumor(
+#             "./pic"
+#         )} 
 
 
 api.add_resource(Covid, "/covid")
 api.add_resource(BrainTumer, "/brainTumor")
-api.add_resource(BrainTumer, "/ecg")
+# api.add_resource(BrainTumer, "/ecg")
 
 app.run(debug = True);
 

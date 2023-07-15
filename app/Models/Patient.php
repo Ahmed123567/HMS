@@ -27,7 +27,7 @@ class Patient extends Model
     }
 
     public function user() {
-        return $this->hasOne(User::class, "employee_id");
+        return $this->hasOne(User::class, "employee_id")->patients();
     }
 
     public function records() {
@@ -38,5 +38,9 @@ class Patient extends Model
         return $this->hasMany(AppointmentResrvation::class, "patient_id");
     }
 
+
+    public function exceededResrvationsDailyLimit($time) {
+        return $this->resrvations()->atDay($time)->count() >= 3;
+    }
 }
 

@@ -70,7 +70,7 @@ class AppointmentResrvation extends Model
 
     public function scopeAtDay(Builder $q, $day)
     {
-        return $q->whereDate("time",getCarbon($day)->format("Y-m-d"));
+        return $q->whereDate("time", getCarbon($day)->format("Y-m-d"));
     }
 
     public function scopeConfirmed(Builder $q) {

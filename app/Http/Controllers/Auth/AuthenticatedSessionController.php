@@ -33,7 +33,7 @@ class AuthenticatedSessionController extends Controller
             return redirect()->route("patient.view.index");
         }
 
-        if($request->user()->isDoctor()) {
+        if($request->user()->isDoctor() || $request->user()->isLabAnalyst() ) {
             return redirect()->route("dashboard");
         }
 

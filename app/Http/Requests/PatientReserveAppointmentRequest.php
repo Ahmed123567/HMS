@@ -29,6 +29,10 @@ class PatientReserveAppointmentRequest extends FormRequest
                 "required",
                 function (string $attribute, mixed $value, Closure $fail) {
 
+                    if (auth()->user()->patient->exceededResrvationsDailyLimit($value)) {
+                        $fail("exceeded resrvation limit");
+                    }
+
                     if($this->doctor()) {
                         if ($this->doctor()->isHoliday($value)) {
                             $fail("invalid date doctor is on holiday");

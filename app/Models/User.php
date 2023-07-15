@@ -34,7 +34,8 @@ class User extends Authenticatable
         "phone_number",
         "image",
         "role_id",
-        "employee_id"
+        "employee_id",
+        "patient_id"
     ];
 
     /**
@@ -55,7 +56,9 @@ class User extends Authenticatable
         });
 
         static::updating(function($user) {
-            $user->password = Hash::make($user->password);
+            if(!empty(request()->password)) {
+                $user->password = Hash::make($user->password);
+            }
         });
     }
 
@@ -109,6 +112,12 @@ class User extends Authenticatable
     public function scopePatients(Builder $q) {
         return $q->with("role")->whereHas("role", function($q){
             return $q->where("name", Role::PATIENT);
+        });
+    }
+
+    public function scopeEmployees(Builder $q) {
+        return $q->with("role")->whereHas("role", function($q){
+            return $q->where("name", "!=", Role::PATIENT);
         });
     }
 
