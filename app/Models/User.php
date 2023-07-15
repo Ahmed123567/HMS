@@ -65,7 +65,7 @@ class User extends Authenticatable
     }
 
     public function hasRole(...$roles) {
-        return collect($roles)->contains($this->role->name);
+        return collect($roles)->map("strtolower")->contains(strtolower($this->role->name));
     }
 
     public function assignRole(string|int $role) : void {
@@ -128,6 +128,10 @@ class User extends Authenticatable
         return  Str::lower($this->role->name) == Role::PATIENT;
     }
 
+    public function isReceptionist() {
+        return  Str::lower($this->role->name) == Role::RECEPTIONIST;
+    }
+
     public function isLabAnalyst() {
         return $this->role->name == Role::LAB_ANALYST;
     }
@@ -149,5 +153,9 @@ class User extends Authenticatable
 
     public function imageUrl() {
         return 'storage/images/' . ( $this->image ?? "default.jpg" ) ;
+    }
+
+    public function imageStorePath() {
+        return storage_path('app/public/images/' . $this->image);
     }
 }

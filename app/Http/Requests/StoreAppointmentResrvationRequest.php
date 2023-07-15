@@ -32,12 +32,14 @@ class StoreAppointmentResrvationRequest extends FormRequest
                 "required",
                 function (string $attribute, mixed $value, Closure $fail) {
 
-                    if ($this->doctor()->isHoliday($value)) {
-                        $fail("invalid date doctor is on holiday");
-                    }
-
-                    if (!$this->doctor()->shift?->inShiftHours($value)) {
-                        $fail("reservation time is not in shift hours");
+                    if($this->doctor()) {
+                        if ($this->doctor()->isHoliday($value)) {
+                            $fail("invalid date doctor is on holiday");
+                        }
+    
+                        if (!$this->doctor()->shift?->inShiftHours($value)) {
+                            $fail("reservation time is not in shift hours");
+                        }
                     }
                 }
             ],

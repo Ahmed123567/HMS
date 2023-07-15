@@ -11,6 +11,7 @@ use App\Models\Patient;
 use App\Models\Role;
 use App\Models\Shift;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class EmployeeController extends Controller
 {
@@ -77,6 +78,7 @@ class EmployeeController extends Controller
    
     
     public function getPeople(Role $role) {
+    
         
         if($role->isPatient()) {
             return Patient::select("id", "name")->get();
