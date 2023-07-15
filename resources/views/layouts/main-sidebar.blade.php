@@ -26,67 +26,67 @@
                 <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
                 <span class="side-menu__icon"><i class="fa fa-id-card"></i></span>
                 <span class="side-menu__label">&nbsp;Users</span><i class="angle fe fe-chevron-down"></i></a>
-				
+
 				<ul class="slide-menu">
                     <li><a class="slide-item" href="{{ route('user.index') }}">Users</a></li>
                     <li><a class="slide-item" href="{{ route('employee.index') }}">Employees</a></li>
                 </ul>
-                
+
             </li>
 
             <li class="slide">
                 <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
-                <span class="side-menu__icon"><i class="fa fa-address-book"></i></span>    
+                <span class="side-menu__icon"><i class="fa fa-address-book"></i></span>
                 <span class="side-menu__label">Patients</span><i class="angle fe fe-chevron-down"></i></a>
-				
+
 				<ul class="slide-menu">
                     <li><a class="slide-item" href="{{ route('patient.index') }}">Patients</a></li>
                 </ul>
-                
+
             </li>
 
             <li class="slide">
                 <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
                 <span class="side-menu__icon"><i class="fa fa-fingerprint"></i></span>
                 <span class="side-menu__label">Attendance</span><i class="angle fe fe-chevron-down"></i></a>
-				
+
 				<ul class="slide-menu">
                     <li><a class="slide-item" href="{{ route('shift.index') }}">Shifts</a></li>
                     <li><a class="slide-item" href="{{ route('attendance.index') }}">Attendance Report</a></li>
                 </ul>
-                
+
             </li>
 
-            
-            
+
+
             <li class="slide">
                 <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
-                <span class="side-menu__icon"><i class="fa fa-toggle-on"></i></span>    
+                <span class="side-menu__icon"><i class="fa fa-toggle-on"></i></span>
                 <span class="side-menu__label">Pervilages</span><i class="angle fe fe-chevron-down"></i></a>
-				
+
 				<ul class="slide-menu">
                     <li><a class="slide-item" href="{{ route("role.index") }}">Roles</a></li>
                     <li><a class="slide-item" href="{{ route("permission.index") }}">Permissions</a></li>
                 </ul>
             </li>
 
-            
+
             <li class="slide">
                 <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
-                <span class="side-menu__icon"><i class="fa fa-calendar-check"></i></span>    
-                <span class="side-menu__label">Resrvations</span><i class="angle fe fe-chevron-down"></i></a>
-				
+                <span class="side-menu__icon"><i class="fa fa-calendar-check"></i></span>
+                <span class="side-menu__label">Reservations</span><i class="angle fe fe-chevron-down"></i></a>
+
 				<ul class="slide-menu">
-                    <li><a class="slide-item" href="{{ route("room.reserve.index") }}">Rome Resrvation</a></li>
-                    <li><a class="slide-item" href="{{ route("appointment.reserve.index") }}">Appointment Resrvation</a></li>
+                    <li><a class="slide-item" href="{{ route("room.reserve.index") }}">Rooms Reservation</a></li>
+                    <li><a class="slide-item" href="{{ route("appointment.reserve.index") }}">Appointment Reservation</a></li>
                 </ul>
             </li>
 
             <li class="slide">
                 <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
-                <span class="side-menu__icon"><i class="fa fa-sitemap"></i></span>    
+                <span class="side-menu__icon"><i class="fa fa-sitemap"></i></span>
                 <span class="side-menu__label">Departments</span><i class="angle fe fe-chevron-down"></i></a>
-				
+
 				<ul class="slide-menu">
                     <li><a class="slide-item" href="{{ route('department.index') }}">Departments</a></li>
                 </ul>
@@ -94,9 +94,9 @@
 
             <li class="slide">
                 <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
-                <span class="side-menu__icon"><i class="fa fa-bed"></i></span>    
+                <span class="side-menu__icon"><i class="fa fa-bed"></i></span>
                 <span class="side-menu__label">Rooms</span><i class="angle fe fe-chevron-down"></i></a>
-				
+
 				<ul class="slide-menu">
                     <li><a class="slide-item" href="{{ route('room.index') }}">Rooms</a></li>
                 </ul>

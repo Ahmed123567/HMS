@@ -15,7 +15,7 @@ $lab2 = Lab::all();
                 <div class="feature widget-2 text-center mt-0 mb-3">
                     <i class="fa fa-address-book  project bg-success-transparent mx-auto text-success "></i>
                 </div>
-                <h6 class="mb-1 text-muted">Resrvations</h6>
+                <h6 class="mb-1 text-muted">Reservations</h6>
                 <h3 class="font-weight-semibold">{{ auth()->user()->employee?->reservatoins()?->count() ?? 0 }}
                 </h3>
             </div>
@@ -27,7 +27,7 @@ $lab2 = Lab::all();
                 <div class="feature widget-2 text-center mt-0 mb-3">
                     <i class="fa fa-calendar  project bg-warning-transparent mx-auto text-warning "></i>
                 </div>
-                <h6 class="mb-1 text-muted">Today's Resrvations</h6>
+                <h6 class="mb-1 text-muted">Today's Reservations</h6>
                 <h3 class="font-weight-semibold">{{ $employee?->reservatoins()->today()->count() ?? 0 }}
                 </h3>
             </div>

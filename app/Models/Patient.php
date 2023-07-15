@@ -21,9 +21,9 @@ class Patient extends Model
         "medical_history"
     ];
 
-    
+
     public function gender() {
-        return $this->gender == 0 ? "mail" : "femail";
+        return $this->gender == 0 ? "male" : "female";
     }
 
     public function user() {

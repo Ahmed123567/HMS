@@ -4,8 +4,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">Tables</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ Data
-                    Tables</span>
+                <h4 class="content-title mb-0 my-auto">Management</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ Rooms</span>
             </div>
         </div>
         <div class="d-flex my-xl-auto right-content">
@@ -25,7 +24,7 @@
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title mg-b-0">Department TABLE</h4>
+                        <h4 class="card-title mg-b-0">Rooms</h4>
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
                 </div>
@@ -37,7 +36,7 @@
                                     <th>Room Id</th>
                                     <th>Number Of Beds</th>
                                     <th>Bed Price</th>
-                                    <th>Is Sepcial</th>
+                                    <th>Is Special</th>
                                     <th>Avilable Beds</th>
                                 </tr>
                             </thead>
@@ -48,7 +47,7 @@
                                         <td>{{ $room->number_of_beds }}</td>
                                         <td>{{ $room->one_night_bed_price }} $</td>
                                         <td>
-                                            {{ $room->is_special == 1 ? "sepcial" : "-"  }}
+                                            {{ $room->is_special == 1 ? "special" : "-"  }}
                                         </td>
                                         <td>
                                             {{$room->number_of_beds}}
@@ -72,4 +71,3 @@
         </div>
         <!--/div-->
     @endsection
-    

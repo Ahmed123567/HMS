@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Medical Records</h5>
                     <p class="card-text">View your medical history including records, prescriptions, and tests results.</p>
-                    
+
                 </div>
                 <div class="card-footer text-muted">
                     <a href="{{ route("patient.view.medical_profile") }}" class="btn btn-primary" style="background-color:#00b4ff;
@@ -28,7 +28,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Appointments</h5>
                     <p class="card-text">Make an appointment with any available doctor during work hours.</p>
-                    
+
                 </div>
                 <div class="card-footer text-muted">
                     <a href="{{ route("patient.view.appointment") }}" class="btn btn-primary" style="background-color:#00b4ff;
@@ -43,8 +43,8 @@
                 </h1>
                 <div class="card-body">
                     <h5 class="card-title">Chat</h5>
-                    <p class="card-text">Chat with your doctors about any inquireis you have, and recieve notices from the system admins.</p>
-                    
+                    <p class="card-text">Chat with your doctors about any inquireis you have.</p>
+
                 </div>
                 <div class="card-footer text-muted">
                     <a href="{{url('chat')}}" class="btn btn-primary" style="background-color:#00b4ff;
