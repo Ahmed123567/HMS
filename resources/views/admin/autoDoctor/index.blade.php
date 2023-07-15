@@ -30,10 +30,10 @@
             <div class="row row-sm">
                 <div class="col-xl-4 col-lg-4 col-md-12">
                     <div class="card text-center">
-                        <img class="card-img-top w-100" src="{{URL::asset('assets/img/photos/9.jpg')}}" alt="">
+                        <img class="card-img-top w-100" src="{{URL::asset('assets/img/photos/covid.jpg')}}" alt="">
                         <div class="card-body">
-                            <h4 class="card-title mb-3">Covid Check</h4>
-                            <p class="card-text">Accuracy: <span class="badge badge-success">95%</span></p>
+                            <h4 class="card-title mb-3">Covid/Pneumonia</h4>
+                            <p class="card-text">Accuracy: <span class="badge badge-success">96.7%</span></p>
                             <div class="btn btn-primary btn-rounded ">
                                 <a data-url="{{ route("autoDoctor.covid") }}" style="cursor: pointer"
                                     data-title="Covid Check" class="modal_btn"><i class="fa fa-upload"></i></a>
@@ -46,7 +46,7 @@
                         <img class="card-img-top w-100" src="{{URL::asset('assets/img/photos/10.jpg')}}" alt="">
                         <div class="card-body">
                             <h4 class="card-title mb-3">Brain Tumor</h4>
-                            <p class="card-text">Accuracy: <span class="badge badge-success">92%</span></p>
+                            <p class="card-text">Accuracy: <span class="badge badge-success">94.7%</span></p>
                             <div class="btn btn-primary btn-rounded ">
                                 <a data-url="{{ route("autoDoctor.brainTumor") }}" style="cursor: pointer"
                                     data-title="Brain Tumor Check" class="modal_btn"><i class="fa fa-upload"></i></a>
@@ -59,7 +59,7 @@
                         <img class="card-img-top w-100" src="{{URL::asset('assets/img/photos/12.jpg')}}" alt="">
                         <div class="card-body">
                             <h4 class="card-title mb-3">ECG</h4>
-                            <p class="card-text">Accuracy: <span class="badge badge-warning">85%</span></p>
+                            <p class="card-text">Accuracy: <span class="badge badge-success">97%</span></p>
                             <div class="btn btn-primary btn-rounded ">
                                 <a data-url="{{ route("autoDoctor.covid") }}" style="cursor: pointer"
                                     data-title="Covid Check" class="modal_btn"><i class="fa fa-upload"></i></a>
