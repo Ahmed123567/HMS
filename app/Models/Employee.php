@@ -75,4 +75,8 @@ class Employee extends Model
     public function managedDepartment() {
         return $this->hasOne(Department::class, "manager_id");
     }
+
+    public function scopeDosentHaveAccount(Builder $q) {
+        return $q->doesntHave("user");
+    }
 }

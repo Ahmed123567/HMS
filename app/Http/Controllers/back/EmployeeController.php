@@ -20,11 +20,11 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::with("user","shift", "department")
-                            ->when(auth()->user()->isManager(), function($q) {
-                                return $q->underDepartment(auth()->user()?->managedDepartment()?->id);
-                            })
-                            ->get();
+        $employees = Employee::with("user", "shift", "department")
+            ->when(auth()->user()->isManager(), function ($q) {
+                return $q->underDepartment(auth()->user()?->managedDepartment()?->id);
+            })
+            ->get();
 
         return view("admin.employee.index", compact("employees"));
     }
@@ -32,9 +32,9 @@ class EmployeeController extends Controller
     public function create()
     {
         $departments = Department::pluck("name", "id");
-        $shifts = Shift::pluck("name", "id"); 
-        
-        return view("admin.employee.create", compact("departments","shifts"));
+        $shifts = Shift::pluck("name", "id");
+
+        return view("admin.employee.create", compact("departments", "shifts"));
     }
 
     public function store(StoreEmployeeRequest $request)
@@ -48,11 +48,11 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        
-        $departments = Department::pluck("name", "id");
-        $shifts = Shift::pluck("name", "id"); 
 
-        return view("admin.employee.edit", compact("departments","shifts", "employee"));   
+        $departments = Department::pluck("name", "id");
+        $shifts = Shift::pluck("name", "id");
+
+        return view("admin.employee.edit", compact("departments", "shifts", "employee"));
     }
 
     /**
@@ -75,16 +75,12 @@ class EmployeeController extends Controller
         return back()->with("success", "Employee deleted successfully");
     }
 
-   
-    
-    public function getPeople(Role $role) {
-    
-        
-        if($role->isPatient()) {
-            return Patient::select("id", "name")->get();
-        }
 
-        return Employee::select("id", "name")->get();
+
+    public function getPeople(Role $role)
+    {
+
+        return $role->isPatient() ?  Patient::select("id", "name")->dosentHaveAccount()->get()
+            : Employee::select("id", "name")->dosentHaveAccount()->get();
     }
-
 }

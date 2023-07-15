@@ -111,7 +111,7 @@
             })
 
 
-            let buttons = document.querySelectorAll('.delete_button');
+            const buttons = document.querySelectorAll('.delete_button');
 
             buttons.forEach(button => {
                 button.onclick = (e) => {
@@ -164,6 +164,8 @@
                                         errorMessages +=
                                             `<p class='text-danger validation-message' style="font-size:12px"><span style="font-size:15px">😡</span>${error}</p>`
                                     });
+
+                                    
                                     input.insertAdjacentHTML("afterend", errorMessages)
                                 }
                             }

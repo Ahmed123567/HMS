@@ -7,6 +7,7 @@ use App\Http\Requests\StoreAttendanceEmployeeRequest;
 use App\Imports\AttendanceEmployeeImport;
 use App\Models\AttendanceEmployee;
 use App\Services\AttendanceService;
+use Exception;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -22,6 +23,7 @@ class AttendanceEmployeeController extends Controller
                                                 });
                                             })
                                             ->get();
+
         return view("admin.attendanceEmployee.index", compact("transactions"));
     }
 
@@ -33,7 +35,11 @@ class AttendanceEmployeeController extends Controller
     public function store(StoreAttendanceEmployeeRequest $request, AttendanceService $attendanceService)
     {
 
-        Excel::import(new AttendanceEmployeeImport($attendanceService), $request->file("file"));
+        try {
+            Excel::import(new AttendanceEmployeeImport($attendanceService), $request->file("file"));
+        }catch (Exception $e) {
+            return back()->with("error", "transactions importing faild");
+        } 
         return back()->with("success", "transactions inserted successfully");
     }
 

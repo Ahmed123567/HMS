@@ -17,9 +17,9 @@ class EmployeeSelect extends Component
     {
         
         if($patients) {
-            $this->employees = Patient::pluck("name", "id");
+            $this->employees = Patient::dosentHaveAccount()->pluck("name", "id");
         }else {
-            $this->employees = Employee::pluck("name", "id");
+            $this->employees = Employee::dosentHaveAccount()->pluck("name", "id");
         }
     }
 

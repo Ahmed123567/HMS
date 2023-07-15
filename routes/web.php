@@ -164,6 +164,7 @@ Route::middleware('auth')->group(function () {
         Route::get("/appointment", "appointment")->name("appointment");
         Route::post("/reserve", "reserve")->name("reserve");
         Route::put("/accountUpdate", "accountUpdate")->name("accountUpdate");
+        Route::delete("/reservation/{reservation}", "deleteReservation")->name("reservation");
     });
     
     Route::get("doctorPatientViewAjax/{doctor}", [AppointmentController::class, "doctorPatientViewAjax"])->name("doctor.patientView.ajax");

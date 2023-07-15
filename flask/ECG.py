@@ -2,9 +2,16 @@ import pandas as pd
 import numpy as np
 import torch 
 import torch.nn as nn
+import torch.nn.functional as F
 import torch.optim as optim
-from torch.utils.data import TensorDataset, DataLoader
+from torch.utils.data import TensorDataset, DataLoader, WeightedRandomSampler
+from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
+import seaborn as sns
+from copy import deepcopy
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import classification_report
+from torch.optim.lr_scheduler import StepLR
 
 class_names = {0: 'Normal', 1: 'SVT', 2: 'VPC', 3: 'STEMI', 4: 'Sinus pause'}
 
@@ -14,8 +21,9 @@ def ecg(dir):
     train_df = pd.read_csv(dir, header=None)
     X_df = train_df.iloc[:, :-1]
     X_df = X_df.astype('float')
-    plt.plot(X_df.iloc[0,:186]); plt.savefig('x.png')
-    return
+
+    # plt.plot(X_df.iloc[0,:186]); plt.savefig('x.png')
+
     #the input dims are 187 and the output dims are 5
     X_np = X_df.to_numpy()
     X_np = X_np.reshape(-1, 1, 187)
@@ -70,7 +78,7 @@ def ecg(dir):
 
     model = get_model()
 
-    model.load_state_dict(torch.load('best_model0.99.pt'))
+    model.load_state_dict(torch.load('best_model0.99.pt', map_location=torch.device('cpu')))
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     model = model.to(device)
@@ -82,4 +90,3 @@ def ecg(dir):
         output = model(x) #out shape: (batch_size, 5)
         y_pred.extend(torch.argmax(output, dim=1).cpu().numpy())
         return(class_names[y_pred[0]])
-ai('H.csv')

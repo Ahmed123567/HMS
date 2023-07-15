@@ -18,7 +18,8 @@ class PatientViewController extends Controller
     public function appointment() {
         
         $departments = Department::get();
-        return view("front.patient.appointment", compact("departments"));
+        $confirmedResrvations = auth()->user()->patient?->resrvations()->latest()->paginate(6);
+        return view("front.patient.appointment", compact("departments", "confirmedResrvations"));
     }
 
     public function reserve(PatientReserveAppointmentRequest $request) {
@@ -32,6 +33,13 @@ class PatientViewController extends Controller
        
         auth()->user()->update($request->data());
         return back()->with("success", "profile updated successfully");
+    }
+
+
+    public function deleteReservation(AppointmentResrvation $reservation) {
+
+        $reservation->delete();
+        return back()->with("success", "reservation canceld successfully");
     }
 
 }

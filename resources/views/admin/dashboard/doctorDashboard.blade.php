@@ -63,7 +63,7 @@ $lab2 = Lab::all();
 
 
 <div class="row row-sm">
-    <div class="col-xl-12">
+    <div class="col-xl-6">
         <div class="card">
             <div class="card-header pb-0">
                 <div class="d-flex justify-content-between">
@@ -86,28 +86,26 @@ $lab2 = Lab::all();
                                 <th>#</th>
                                 <th>Patient ID </th>
                                 <th>Patient Name </th>
-                                <th>doctor id </th>
                                 <th>Time</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($employee?->reservatoins()->today()?->latest()->take(5)->get() as $resrvation)
+                            @foreach($employee?->reservatoins()->notClosed()->today()?->latest()->take(5)->get() as $resrvation)
                             <tr>
                                 <td scope="row">{{ $loop->iteration }}</td>
                                 <td>{{ $resrvation?->patient?->id }}</td>
                                 <td>{{ $resrvation?->patient?->name }}</td>
-                                <td>{{ $name = $employee?->name }}</td>
                                 <td>{{ $resrvation?->time?->format('H:i') }}</td>
                                 <td class="d-flex">
                                     <a href="{{ route("patient.medicalProfile", $resrvation?->patient->id) }}"
-                                        class="btn btn-info btn-icon">
+                                        class="btn btn-info btn-sm mx-1 btn-icon">
                                         <i class="mdi mdi-eye"></i>
                                     </a>
 
                                     @if (!$resrvation?->isClosed() && $resrvation?->isConfirmed())
                                     &nbsp
-                                    <button class="modal_btn btn btn-sm btn-danger btn-icon"
+                                    <button class="modal_btn btn mx-1 btn-sm btn-danger btn-sm-icon"
                                         data-title="Appointmet Report"
                                         data-url="{{route("appointment.reserve.report", $resrvation->id)}}">
                                         <i class="mdi mdi-close"></i>
@@ -119,7 +117,7 @@ $lab2 = Lab::all();
                                     <form action="{{ route('appointment.reserve.confirm', $resrvation->id) }}"
                                         method="post" class="mx-2">
                                         @csrf
-                                        <button class="delete_button btn btn-sm btn-info btn-icon"
+                                        <button class="delete_button mx-1 btn btn-sm btn-info btn-icon"
                                             data-button_name="Approve" type="submit">
                                             <i data-button_name="Approve" class="fa fa-stethoscope"></i>
                                         </button>
@@ -133,7 +131,7 @@ $lab2 = Lab::all();
                                     </button>
                                 </td>
                                 <div style="display: none;">
-                                    {{$employee = Employee::where('name', $name)->first();}}
+                                    {{$employee = Employee::where('name', $employee?->name)->first();}}
                                     {{$department_id = $employee->department_id; }}
                                     {{$department = Department::where('id', $department_id)->first();}}
                                     {{$department_name = $department->name; }}
@@ -220,12 +218,7 @@ $lab2 = Lab::all();
     <!--/div-->
 
 
-
-
-</div>
-
-<div class="row row-sm">
-    <div class="col-xl-12">
+    <div class="col-xl-6">
         <div class="card">
             <div class="card-header pb-0">
                 <div class="d-flex justify-content-between">
@@ -238,10 +231,8 @@ $lab2 = Lab::all();
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Patient ID</th>
+                                <th>Patient Id</th>
                                 <th>Type</th>
-                                <th>doctor</th>
-                                <th>Dept</th>
                                 <th>Files</th>
                             </tr>
                         </thead>
@@ -252,12 +243,10 @@ $lab2 = Lab::all();
                                 <th scope="row">{{$lab->id}}</th>
                                 <td>{{$lab->patient_id}}</td>
                                 <td>{{$lab->type}}</td>
-                                <td>{{$lab->doctor_name}}</td>
-                                <td>{{$lab->department_name}}</td>
-                                <td><a class="btn btn-info button-with-icon" href="{{ asset('storage/images/'.$lab->attachements) }}"
+                                <td><a class="btn btn-info button-with-icon" download  href="{{ asset('storage/images/'. $lab->attachements) }}"
                                         target="_blank">
                                         <i class="fe fe-eye"></i>
-                                        Show Attachement</a>
+                                        Download Attachement</a>
                                     {{-- <img src="{{asset('storage/images/'.$lab->attachements  )}}" width="50px"
                                     height="50px" > --}}
                                 </td>
@@ -271,7 +260,12 @@ $lab2 = Lab::all();
             </div>
         </div>
     </div>
+
+
+
 </div>
+
+
 
 <!--div-->
 <div class="row row-sm">

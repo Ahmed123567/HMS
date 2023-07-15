@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\ValidationException;
 
 class StoreAttendanceEmployeeRequest extends FormRequest
 {
@@ -25,4 +27,7 @@ class StoreAttendanceEmployeeRequest extends FormRequest
             "file" => ["required", "mimes:xlsx,csv"]
         ];
     }
+
+
+    
 }

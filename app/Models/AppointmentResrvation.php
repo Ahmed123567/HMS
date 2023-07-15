@@ -82,6 +82,11 @@ class AppointmentResrvation extends Model
         return $q->where("is_closed", 1);
     }
 
+
+    public function scopeNotClosed(Builder $q) {
+        return $q->where("is_closed", 0);
+    }
+
     public function scopeforAuthDoctor(Builder $q) {
         return $q->where("doctor_id", auth()->user()?->employee?->id);
     }

@@ -48,9 +48,9 @@ class AutoDoctorController extends Controller
     }
 
     public function ecgCheck(CovidCheckRequest $req) {
-                    
+
         $result = Http::flask()
-                        ->attach('file', file_get_contents($req->image), 'sample.' . $req->image->extension())
+                        ->attach('file', file_get_contents($req->image), 'sample.csv')
                         ->post("ecg");
         
         return <<<html

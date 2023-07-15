@@ -26,17 +26,20 @@ class AttendanceEmployeeImport implements ToModel, WithStartRow, WithHeadingRow 
         $punchTime = Carbon::instance(Date::excelToDateTimeObject($row['punch_time']));
         $employee = Employee::find($row['code']);
 
-        $record = AttendanceEmployee::firstOrCreate(
-            [
-                "employee_id"  => $row['code'],
-                "date" => $punchTime->format("Y-m-d")
-            ]
-            , [
-                "status" => "present",
-                "shift_id" => $employee->shift?->id,
-                'created_by' => 0
-            ]
-        );
+        if($employee) {
+            $record = AttendanceEmployee::firstOrCreate(
+                [
+                    "employee_id"  => $row['code'],
+                    "date" => $punchTime->format("Y-m-d")
+                ]
+                , [
+                    "status" => "present",
+                    "shift_id" => $employee->shift?->id,
+                    'created_by' => 0
+                ]
+            );
+
+        }
 
     
 

@@ -3,25 +3,28 @@
 
 @section('content')
     <div class="container">
+
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="heading-section mb-4">Appointment Reservation</h2>
 
                 <div class="tabulation">
-							{{-- <ul class="nav nav-pills nav-fill">
-								<li class="nav-item">
-									<a class="nav-link active py-3" data-toggle="tab" href="#new"><span
-											class="ion-ios-calendar mr-2"></span> Make New</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link py-3 mx-md-3" data-toggle="tab" href="#pending"><span
-											class="ion-ios-paper mr-2"></span> Previous Appointments</a>
-								</li>
-							</ul> --}}
+                    <ul class="nav nav-pills nav-fill">
+                        <li class="nav-item">
+                            <a class="nav-link py-3 mx-md-3 {{ session()->has('errors') ?: 'active' }}  " data-toggle="tab"
+                                href="#pending"><span class="ion-ios-paper mr-2"></span> Previous Appointments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link  {{ session()->has('errors') ? 'active' : '' }}  py-3" data-toggle="tab"
+                                href="#new"><span class="ion-ios-calendar mr-2"></span> Make New</a>
+                        </li>
 
-               
-                    <div class="tab-content rounded mt-4">
-                        <div class="tab-pane container p-4 active " id="new">
+                    </ul>
+
+
+                    <div class="tab-content  rounded mt-4">
+                        <div class="tab-pane container p-4 {{ session()->has('errors') ? 'active show' : '' }} "
+                            id="new">
                             <div class=" py-5 mt-md-5">
                                 <div class="container py-md-5">
                                     <form action="{{ route('patient.view.reserve') }}" method="post">
@@ -64,9 +67,9 @@
                                             </div>
                                         </div>
                                         <div class="text-right">
-                                        <button type="submit" class="btn btn-primary mt-3">
-                                            Reserve
-                                        </button>
+                                            <button type="submit" class="btn btn-primary mt-3">
+                                                Reserve
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
@@ -77,11 +80,51 @@
 
                             </div>
                         </div>
-                        <div class="tab-pane container p-4 fade" id="pending">
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and
-										Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-										right at the coast of the Semantics, a large language ocean.</p>
-						</div>
+
+
+                        <div class="tab-pane {{ session()->has('errors') ?: 'active show' }}  container p-4 fade"
+                            id="pending">
+                            <div class="table-responsive">
+                                <table class="table text-md-nowrap" id="exampl1">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Department</th>
+                                            <th>Doctor</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($confirmedResrvations as $resrvation)
+                                            <tr>
+                                                <td>{{ $resrvation->time->format('Y-m-d') }}</td>
+                                                <td>{{ $resrvation->time->format('g:i A') ?? '-' }}</td>
+                                                <td>{{ $resrvation->doctor->department->name ?? '-' }}</td>
+                                                <td>{{ $resrvation->doctor->name ?? '-' }}</td>
+                                                <td>
+                                                    @if (!$resrvation->time->isPast())
+                                                        <form action="{{ route("patient.view.reservation", $resrvation->id) }}" method="post"
+                                                            class="mx-1">
+                                                            @method('delete')
+                                                            @csrf
+                                                            <button class=" delete_button badge btn btn-sm btn-danger" data-toggle="tooltip"
+                                                                title="Cancel Reservation" type="submit">
+                                                                <i class="fa fa-cancel"></i>
+                                                            </button>
+                                                        </form>
+                                                    @endif
+                                                </td>
+                                               
+                                            </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+
+                                {!! $confirmedResrvations->links('pagination::bootstrap-4') !!}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -91,11 +134,13 @@
                 const doctorSelect = document.getElementById("doctor_select");
                 const time = document.getElementById("time");
                 const departmentSelect = document.getElementById("deparmtent_select");
-                
+
                 const resrvationAction = event => {
 
-                    const doctorUrl = urlFor(`{{ route('doctor.patientView.ajax', ':id') }}?time=${time.value}`, {id : doctorSelect.value});
-                    
+                    const doctorUrl = urlFor(`{{ route('doctor.patientView.ajax', ':id') }}?time=${time.value}`, {
+                        id: doctorSelect.value
+                    });
+
                     fetch(doctorUrl).then(async function(response) {
                         document.getElementById("reservations").innerHTML = await response.text();
                     });
@@ -103,7 +148,9 @@
 
                 const changeDepartmentAction = event => {
 
-                    const url = urlFor("{{ route('deparmtent.doctors', ':id') }}", { id: event.target.value })
+                    const url = urlFor("{{ route('deparmtent.doctors', ':id') }}", {
+                        id: event.target.value
+                    })
 
                     fetch(url).then(async function(response) {
                         document.querySelector(event.target.dataset.target).innerHTML = await response.text();

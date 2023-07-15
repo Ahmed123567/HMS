@@ -20,7 +20,9 @@
     <link rel="stylesheet" href={{ asset('css/aos.css') }}>
 
     <link rel="stylesheet" href={{ asset('css/ionicons.min.css') }}>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href={{ asset('css/bootstrap-datetimepicker.min.css') }}>
     <link rel="stylesheet" href={{ asset('css/nouislider.css') }}>
 
@@ -184,6 +186,7 @@
     <script src={{ asset('js/moment-with-locales.min.js') }}></script>
     <script src={{ asset('js/bootstrap-datetimepicker.min.js') }}></script>
     <script src={{ asset('js/main.js') }}></script>
+    <script src="{{ asset('assets/js/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
 
     <script>
         $(".modal_btn").on("click", function() {
@@ -213,6 +216,28 @@
 
             return route;
         }
+        const buttons = document.querySelectorAll('.delete_button');
+
+        buttons.forEach(button => {
+                button.onclick = (e) => {
+                    e.stopPropagation();
+                    e.preventDefault(); 
+                    let buttonName = e.target.dataset.button_name ?? "Approve";
+                    Swal.fire({
+                        title: "are you sure",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: buttonName
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            e.target.closest("form").submit()
+                        }
+                    })
+                }
+            });
+
     </script>
 
     @stack('js')

@@ -22,7 +22,7 @@ class CovidCheckRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "image" => ["required", "mimes:png,jpg,jpeg,csv"]
+            "image" => ["required", ""]
         ];
     }
 }
