@@ -114,7 +114,7 @@
                     <div class="row description js-fullheight align-items-center justify-content-center">
                         <div class="col-md-8 text-center">
                             <div class="text">
-                                <h1>Wellcome to</h1>&NewLine;
+                                <h1>Welcome to</h1>&NewLine;
                                 <h1>Vital Portal</h1>
                                 <h4 class="mb-5">All your medical services in one place.</h4>
                                 <p><a href="#services" class="btn btn-primary px-4 py-3"

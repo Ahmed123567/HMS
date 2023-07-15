@@ -31,7 +31,7 @@
 
 
             @if (auth()->user()->hasRole("Admin", "Manager"))
-                
+
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
                         <span class="side-menu__icon"><i class="fa fa-id-card"></i></span>
@@ -46,7 +46,7 @@
             @endif
 
             @if (auth()->user()->hasRole("Receptionist", "Admin"))
-                
+
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
                         <span class="side-menu__icon"><i class="fa fa-address-book"></i></span>
@@ -60,7 +60,7 @@
             @endif
 
             @if (auth()->user()->hasRole("Manager" , "Admin"))
-               
+
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
                         <span class="side-menu__icon"><i class="fa fa-fingerprint"></i></span>
@@ -76,7 +76,7 @@
             @endif
 
 
-            @if (auth()->user()->hasRole("Admin"))       
+            @if (auth()->user()->hasRole("Admin"))
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
                         <span class="side-menu__icon"><i class="fa fa-toggle-on"></i></span>
@@ -90,7 +90,7 @@
             @endif
 
             @if (auth()->user()->hasRole("Receptionist", "Admin"))
-               
+
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
                         <span class="side-menu__icon"><i class="fa fa-calendar-check"></i></span>
@@ -104,7 +104,7 @@
                 </li>
 
             @endif
-            @if (auth()->user()->hasRole("Admin"))  
+            @if (auth()->user()->hasRole("Admin"))
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
                         <span class="side-menu__icon"><i class="fa fa-sitemap"></i></span>
@@ -116,7 +116,7 @@
                 </li>
             @endif
             @if (auth()->user()->hasRole("Receptionist", "Admin"))
-                
+
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
                         <span class="side-menu__icon"><i class="fa fa-bed"></i></span>
