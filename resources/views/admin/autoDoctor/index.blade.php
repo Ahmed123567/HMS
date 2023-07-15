@@ -35,7 +35,7 @@
                             <h4 class="card-title mb-3">Covid/Pneumonia</h4>
                             <p class="card-text">Accuracy: <span class="badge badge-success">96.7%</span></p>
                             <div class="btn btn-primary btn-rounded ">
-                                <a data-url="{{ route("autoDoctor.covid") }}" style="cursor: pointer"
+                                <a data-url="{{ route("autoDoctor.ecg") }}" style="cursor: pointer"
                                     data-title="Covid Check" class="modal_btn"><i class="fa fa-upload"></i></a>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                             <h4 class="card-title mb-3">Brain Tumor</h4>
                             <p class="card-text">Accuracy: <span class="badge badge-success">94.7%</span></p>
                             <div class="btn btn-primary btn-rounded ">
-                                <a data-url="{{ route("autoDoctor.brainTumor") }}" style="cursor: pointer"
+                                <a data-url="{{ route("autoDoctor.ecg") }}" style="cursor: pointer"
                                     data-title="Brain Tumor Check" class="modal_btn"><i class="fa fa-upload"></i></a>
                             </div>
                         </div>
@@ -61,8 +61,8 @@
                             <h4 class="card-title mb-3">ECG</h4>
                             <p class="card-text">Accuracy: <span class="badge badge-success">97%</span></p>
                             <div class="btn btn-primary btn-rounded ">
-                                <a data-url="{{ route("autoDoctor.covid") }}" style="cursor: pointer"
-                                    data-title="Covid Check" class="modal_btn"><i class="fa fa-upload"></i></a>
+                                <a data-url="{{ route("autoDoctor.ecg") }}" style="cursor: pointer"
+                                    data-title="ECG Check" class="modal_btn"><i class="fa fa-upload"></i></a>
                             </div>
                         </div>
                     </div>

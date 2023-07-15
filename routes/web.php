@@ -140,6 +140,9 @@ Route::middleware('auth')->group(function () {
 
         Route::get("/brainTumor", "brainTumor")->name("brainTumor");
         Route::post("/brainTumor", "brainTumorCheck")->name("brainTumorCheck");
+
+        Route::get("/ecg", "ecg")->name("ecg");
+        Route::post("/ecg", "ecgCheck")->name("ecgCheck");
     });
 
 
