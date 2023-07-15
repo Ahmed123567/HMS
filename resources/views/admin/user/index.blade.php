@@ -44,11 +44,20 @@
                             </thead>
                             <tbody style="vertical-align: middle;">
 
+
                                 @foreach ($users as $user)
-                                    <tr>
-                                        <td><img  style="width: 100%;"
-                                                src="{{ asset('storage/images/' . $user->image ?? "default.jpg" ) }}" class="rounded-circle"></td>
-                                        <td >{{ $user->name }}</td>
+                                <tr>
+                                        <td><img style="width: 100%;"
+
+                                                @if (!Illuminate\Support\Facades\File::exists($user->imageStorePath()))
+                                                    src="{{ asset('storage/images/default.jpg') }}"
+                                                @else
+                                                    src="{{ asset('storage/images/' . $user->image ?? 'default.jpg') }}"
+                                                @endif
+
+                                                class="rounded-circle">
+                                </td>
+                                        <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->phone_number ?? '-' }}</td>
                                         <td>{{ $user->role?->name ?? '-' }}</td>
@@ -61,7 +70,8 @@
                                                 class="modal_btn badge btn btn-primary ">
                                                 <i class="mdi mdi-pen"></i>
                                             </button>
-                                            <form action="{{ route("user.destroy", $user->id) }}" method="post" class="mx-1">
+                                            <form action="{{ route('user.destroy', $user->id) }}" method="post"
+                                                class="mx-1">
                                                 @method('delete')
                                                 @csrf
                                                 <button class=" delete_button badge btn btn-danger" data-toggle="tooltip"
