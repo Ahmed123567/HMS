@@ -16,6 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 
+
     <style>
         .selection .select2-selection {
             padding: 5px 0 0 0;
@@ -28,7 +29,12 @@
     </style>
 
 
+    @livewireStyles
 
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    
+    
 </head>
 
 <body class="main-body app sidebar-mini">
@@ -82,7 +88,7 @@
             </div>
         </div>
 
-        @include('layouts.sidebar')
+        {{-- @include('layouts.sidebar') --}}
         {{-- @include('layouts.footer') --}}
         @include('layouts.footer-scripts')
 
@@ -90,6 +96,8 @@
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 
+        @livewireScripts
+        @searcableScripts
         <script>
             $(".modal_btn").on("click", function() {
                 let url = this.dataset.url;
@@ -134,45 +142,7 @@
             });
 
 
-            $(document).ready(function() {
-                $(document).on("submit", ".validate", function(e) {
-                    e.preventDefault()
-                    let form = $(this)
-                    let form_data = new FormData(form[0]);
-
-                    $.ajax({
-                        type: form.attr('method'),
-                        url: form.attr('action'),
-                        data: form_data,
-                        contentType: false,
-                        processData: false,
-                        cache: false,
-                        success: function(data) {
-                            location.reload();
-                        },
-                        error: function(data) {
-
-                            $(".validation-message").hide();
-                            let errors = data.responseJSON.errors;
-                            for (const inputName in errors) {
-
-                                let input = document.querySelector(`[name=${inputName}]`);
-
-                                if (input) {
-                                    let errorMessages = '';
-                                    errors[inputName].forEach(error => {
-                                        errorMessages +=
-                                            `<p class='text-danger validation-message' style="font-size:12px"><span style="font-size:15px">😡</span>${error}</p>`
-                                    });
-
-                                    
-                                    input.insertAdjacentHTML("afterend", errorMessages)
-                                }
-                            }
-                        },
-                    });
-                })
-            })
+            
 
             const urlFor = (route, bind) => {
  
@@ -232,6 +202,8 @@
 
 
 </html>
+
+
 
 <!--Internal  Datepicker js -->
 <script src="{{ URL::asset('assets/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>

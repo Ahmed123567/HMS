@@ -1,4 +1,4 @@
-<form   action="{{ route("appointment.reserve.close", $appointmentResrvation->id) }}" method="post" enctype="multipart/form-data">
+<form  action="{{ route("appointment.reserve.close", $appointmentResrvation->id) }}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="modal-body">
         <div class="row">

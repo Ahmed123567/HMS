@@ -42,5 +42,7 @@ class PatientViewController extends Controller
         return back()->with("success", "reservation canceld successfully");
     }
 
+
+
 }
 

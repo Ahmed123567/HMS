@@ -34,12 +34,17 @@ class PatientReserveAppointmentRequest extends FormRequest
                     }
 
                     if($this->doctor()) {
+                       
                         if ($this->doctor()->isHoliday($value)) {
                             $fail("invalid date doctor is on holiday");
                         }
     
                         if (!$this->doctor()->shift?->inShiftHours($value)) {
                             $fail("reservation time is not in shift hours");
+                        }
+
+                        if($this->doctor()->hasResrvationAt($value) && settings("reservation_is_reservation_at_the_same_time_allowed") == 0 ) {
+                            $fail("doctor already has reservation at that time");
                         }
                     }
                    

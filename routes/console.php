@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\AppointmentResrvation;
 use App\Models\Patient;
+use App\Models\PatientRecord;
 use App\Models\Room;
 use App\Models\User;
 use App\Pipline\ToFilter;
@@ -25,6 +27,14 @@ use PhpOffice\PhpSpreadsheet\Calculation\TextData\Format;
 
 Artisan::command('casts', function () {
    User::where("id", "!=", 0)->update(["password" => Hash::make(123)]);
+})->purpose('Display an inspiring quote');
+
+
+Artisan::command('i', function () {
+ 
+   $res = PatientRecord::search("Medicin")->get()->toArray();
+
+   dd($res, count($res));
 })->purpose('Display an inspiring quote');
 
 

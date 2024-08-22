@@ -53,12 +53,15 @@ class PatientController extends Controller
 
     public function medicalProfile(Patient $patient)
     {
-        return view("admin.patient.medical_profile", compact("patient"));
+        $records = $patient->records()->paginate(6);
+
+        return view("admin.patient.medical_profile", compact("patient", "records"));
     }
 
     
     public function medicalHistory(Patient $patient) {
 
+        
         return view("admin.patient.medical_history", compact("patient"));
     }
 

@@ -17,13 +17,9 @@ use App\Http\Controllers\back\RomeController;
 use App\Http\Controllers\back\ShiftController;
 use App\Http\Controllers\back\UserController;
 use App\Http\Controllers\back\LabController;
-
+use App\Http\Controllers\back\SettingController;
 use App\Http\Controllers\front\PatientViewController;
-use App\Http\Middleware\isAdmin;
-use App\Http\Middleware\role as MiddlewareRole;
-use App\Models\Patient;
-use App\Models\Permission;
-use App\Models\Role;
+use App\Http\Controllers\PatientRecordController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -100,6 +96,11 @@ Route::middleware('auth')->group(function () {
         Route::get("resrvations/{room}", "resrvation")->name("resrvation");
     });
 
+    Route::prefix("settings")->as("setting.")->controller(SettingController::class)->group(function() {
+        Route::get("/", "index")->name("index");
+        Route::post("/reservation", "reservation")->name("reservation");
+    });
+
 
     Route::get("DepartmentDoctors/{department}", [DepartmentController::class, "deprtmentDoctors"])->name("deparmtent.doctors");
     Route::get("/profile", [ProfileController::class, "index"])->name("admin.profile.index");
@@ -162,6 +163,8 @@ Route::middleware('auth')->group(function () {
         Route::view("/medical_history", "front.patient.medical_history")->name("medical_history");
         Route::view("/medical_profile", "front.patient.medical_profile")->name("medical_profile");
         Route::get("/appointment", "appointment")->name("appointment");
+        
+        
         Route::post("/reserve", "reserve")->name("reserve");
         Route::put("/accountUpdate", "accountUpdate")->name("accountUpdate");
         Route::delete("/reservation/{reservation}", "deleteReservation")->name("reservation");
@@ -169,6 +172,8 @@ Route::middleware('auth')->group(function () {
     
     Route::get("doctorPatientViewAjax/{doctor}", [AppointmentController::class, "doctorPatientViewAjax"])->name("doctor.patientView.ajax");
     
+    Route::get("/patientrecordsAjax/{patient}",[PatientRecordController::class, "recordsAjax"])->name("patient.recordsAjax");
+    Route::get("/doctorResrvationAjax/{doctor}",[DoctorController::class, "resrvationAjax"])->name("doctor.resrvationAjax");
 
 
 });

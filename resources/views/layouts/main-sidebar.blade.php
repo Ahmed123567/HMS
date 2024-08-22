@@ -3,8 +3,10 @@
 <aside class="app-sidebar sidebar-scroll">
     <div class="main-sidebar-header text-center active">
 
-    <a class="desktop-logo logo-light active" href="{{ url('/') }}"><img src="{{URL::asset('assets/img/brand/logo-hms.png')}}" class="main-logo" alt="logo"></a>
-				<a class="logo-icon mobile-logo icon-light active" href="{{ url('/') }}"><img src="{{URL::asset('assets/img/brand/favicon.png')}}" class="logo-icon" alt="logo"></a>
+        <a class="desktop-logo logo-light active" href="{{ url('/') }}"><img
+                src="{{ URL::asset('assets/img/brand/logo-hms.png') }}" class="main-logo" alt="logo"></a>
+        <a class="logo-icon mobile-logo icon-light active" href="{{ url('/') }}"><img
+                src="{{ URL::asset('assets/img/brand/favicon.png') }}" class="logo-icon" alt="logo"></a>
     </div>
     <div class="main-sidemenu">
         <div class="app-sidebar__user clearfix">
@@ -30,8 +32,7 @@
             <li class="side-item side-item-category">Main</li>
 
 
-            @if (auth()->user()->hasRole("Admin", "Manager"))
-
+            @if (auth()->user()->hasRole('Admin', 'Manager'))
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
                         <span class="side-menu__icon"><i class="fa fa-id-card"></i></span>
@@ -45,8 +46,7 @@
                 </li>
             @endif
 
-            @if (auth()->user()->hasRole("Receptionist", "Admin"))
-
+            @if (auth()->user()->hasRole('Receptionist', 'Admin'))
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
                         <span class="side-menu__icon"><i class="fa fa-address-book"></i></span>
@@ -59,8 +59,7 @@
                 </li>
             @endif
 
-            @if (auth()->user()->hasRole("Manager" , "Admin"))
-
+            @if (auth()->user()->hasRole('Manager', 'Admin'))
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
                         <span class="side-menu__icon"><i class="fa fa-fingerprint"></i></span>
@@ -72,11 +71,10 @@
                     </ul>
 
                 </li>
-
             @endif
 
 
-            @if (auth()->user()->hasRole("Admin"))
+            @if (auth()->user()->hasRole('Admin'))
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
                         <span class="side-menu__icon"><i class="fa fa-toggle-on"></i></span>
@@ -89,8 +87,7 @@
                 </li>
             @endif
 
-            @if (auth()->user()->hasRole("Receptionist", "Admin"))
-
+            @if (auth()->user()->hasRole('Receptionist', 'Admin'))
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
                         <span class="side-menu__icon"><i class="fa fa-calendar-check"></i></span>
@@ -102,9 +99,8 @@
                                 Resrvation</a></li>
                     </ul>
                 </li>
-
             @endif
-            @if (auth()->user()->hasRole("Admin"))
+            @if (auth()->user()->hasRole('Admin'))
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
                         <span class="side-menu__icon"><i class="fa fa-sitemap"></i></span>
@@ -115,8 +111,7 @@
                     </ul>
                 </li>
             @endif
-            @if (auth()->user()->hasRole("Receptionist", "Admin"))
-
+            @if (auth()->user()->hasRole('Receptionist', 'Admin'))
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
                         <span class="side-menu__icon"><i class="fa fa-bed"></i></span>
@@ -128,6 +123,17 @@
                 </li>
             @endif
 
+            @if (auth()->user()->hasRole('Receptionist', 'Admin'))
+                <li class="slide">
+                    <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
+                        <span class="side-menu__icon"><i class="fa fa-bed"></i></span>
+                        <span class="side-menu__label">Settings</span><i class="angle fe fe-chevron-down"></i></a>
+
+                    <ul class="slide-menu">
+                        <li><a class="slide-item" href="{{ route("setting.index") }}">Settings</a></li>
+                    </ul>
+                </li>
+            @endif
 
 
         </ul>

@@ -1,73 +1,84 @@
-<?php
-use App\Models\Employee ;
-use App\Models\Department;
-use App\Models\Lab;
-
-
-$lab2 = Lab::all();
-?>
-
-
 <div class="row mt-5">
-    <div class="col-xl-3 col-lg-6 col-sm-6 col-md-6">
-        <div class="card text-center">
+    <div class="col-lg-3 col-md-6">
+        <div class="card  bg-primary-gradient">
             <div class="card-body">
-                <div class="feature widget-2 text-center mt-0 mb-3">
-                    <i class="fa fa-address-book  project bg-success-transparent mx-auto text-success "></i>
+                <div class="counter-status d-flex md-mb-0">
+                    <div class="counter-icon">
+                        <a href="{{ route('appointment.reserve.resrvations', $employee?->id) }}"><i
+                                class="icon icon-people"></i></a>
+                    </div>
+                    <div class="mr-auto">
+                        <a href="{{ route('appointment.reserve.resrvations', $employee?->id) }}">
+                            <h5 class="tx-13 tx-white-8 mb-3">Resrvations</h5>
+                        </a>
+                        <h2 class="counter mb-0 text-white">
+                            {{ auth()->user()->employee?->reservatoins()?->count() ?? 0 }}</h2>
+                    </div>
                 </div>
-                <h6 class="mb-1 text-muted">Reservations</h6>
-                <h3 class="font-weight-semibold">{{ auth()->user()->employee?->reservatoins()?->count() ?? 0 }}
-                </h3>
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-lg-6 col-sm-6 col-md-6">
-        <div class="card text-center">
+    <div class="col-lg-3 col-md-6">
+        <div class="card  bg-danger-gradient">
             <div class="card-body">
-                <div class="feature widget-2 text-center mt-0 mb-3">
-                    <i class="fa fa-calendar  project bg-warning-transparent mx-auto text-warning "></i>
+                <div class="counter-status d-flex md-mb-0">
+                    <div class="counter-icon text-warning">
+                        <a href="{{ route('appointment.reserve.resrvations', [$employee?->id, 'today' => '1']) }}"><i
+                                class="icon icon-rocket"></i></a>
+                    </div>
+                    <div class="mr-auto">
+                        <a href="{{ route('appointment.reserve.resrvations', [$employee?->id, 'today' => '1']) }}">
+                            <h5 class="tx-13 tx-white-8 mb-3">Today Resrvations</h5>
+                        </a>
+                        <h2 class="counter mb-0 text-white">
+                            {{ $employee?->reservatoins()->today()->count() ?? 0 }}</h2>
+                    </div>
                 </div>
-                <h6 class="mb-1 text-muted">Today's Reservations</h6>
-                <h3 class="font-weight-semibold">{{ $employee?->reservatoins()->today()->count() ?? 0 }}
-                </h3>
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-lg-6 col-sm-6 col-md-6">
-        <div class="card text-center">
+    <div class="col-lg-3 col-md-6">
+        <div class="card  bg-success-gradient">
             <div class="card-body">
-                <div class="feature widget-2 text-center mt-0 mb-3">
-                    <i class="fa fa-address-card  project bg-info-transparent mx-auto text-info "></i>
+                <div class="counter-status d-flex md-mb-0">
+                    <div class="counter-icon text-primary">
+                        <i class="icon icon-docs"></i>
+                    </div>
+                    <div class="mr-auto">
+                        <a href="{{ route('doctor.patients', $employee->id) }}">
+                            <h5 class="tx-13 tx-white-8 mb-3">My Patients</h5>
+                            <h2 class="counter mb-0 text-white">
+                                {{ $employee?->reservatoins()->distinct()->count('patient_id') ?? 0 }}</h2>
+                        </a>
+                    </div>
                 </div>
-                <h6 class="mb-1 text-muted">My Patients</h6>
-                <h3 class="font-weight-semibold">{{ $employee?->reservatoins()->distinct()->count('patient_id') ?? 0 }}
-                </h3>
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-lg-6 col-sm-6 col-md-6">
-        <div class="card text-center">
-            <div class="card-body ">
-                <div class="feature widget-2 text-center mt-0 mb-3">
-                    <i class="ti-github project bg-info-transparent mx-auto text-info "></i>
+    <div class="col-lg-3 col-md-6">
+        <div class="card  bg-info-gradient">
+            <div class="card-body">
+                <div class="counter-status d-flex md-mb-0">
+                    <div class="counter-icon text-primary">
+                        <a href="{{ route('autoDoctor.index') }}"><i class="icon icon-docs"></i></a>
+                    </div>
+                    <div class="mr-auto">
+                        <a href="{{ route('autoDoctor.index') }}">
+                            <h5 class="tx-13 mt-4 mx-2 tx-white-8 mb-3">Auto Doctor</h5>
+                        </a>
+                    </div>
                 </div>
-                <h6 class="mb-1 text-muted">AI DOCTOR</h6>
-
-                <a href="{{ route("autoDoctor.index") }}" target="_blank" class="btn btn-primary btn-rounded btn-sm "><i
-                        class="fas fa-external-link-alt"></i> OPEN </a>
-
             </div>
         </div>
     </div>
 </div>
-
 
 <div class="row row-sm">
     <div class="col-xl-6">
         <div class="card">
             <div class="card-header pb-0">
                 <div class="d-flex justify-content-between">
-                    <h4 class="card-title mg-b-0"><div class="spinner-border spinner-border-sm text-info" role="status"> </div>&nbsp Today's Reservations </h4>
+                    <h4 class="card-title mg-b-0">Today Reservations</h4>
                     <div class="messages">
                         <span class="text-info">{{ $employee?->reservatoins()->today()->confirmed()->count() ?? 0 }}
                             confirmed</span>
@@ -84,129 +95,52 @@ $lab2 = Lab::all();
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Patient ID </th>
-                                <th>Patient Name </th>
+                                <th>Patient</th>
                                 <th>Time</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($employee?->reservatoins()->notClosed()->today()?->latest()->take(5)->get() as $resrvation)
-                            <tr>
-                                <td scope="row">{{ $loop->iteration }}</td>
-                                <td>{{ $resrvation?->patient?->id }}</td>
-                                <td>{{ $resrvation?->patient?->name }}</td>
-                                <td>{{ $resrvation?->time?->format('H:i') }}</td>
-                                <td class="d-flex">
-                                    <a href="{{ route("patient.medicalProfile", $resrvation?->patient->id) }}"
-                                        class="btn btn-info btn-sm mx-1 btn-icon">
-                                        <i class="mdi mdi-eye"></i>
-                                    </a>
+                            @foreach ($employee
+        ?->reservatoins()->today()
+        ?->latest()->notClosed()->take(5)->get() as $resrvation)
+                                <tr>
+                                    <td scope="row">{{ $loop->iteration }}</td>
+                                    <td>{{ $resrvation?->patient?->name }}</td>
+                                    <td>{{ $resrvation?->time?->format('H:i') }}</td>
+                                    <td class="d-flex">
 
-                                    @if (!$resrvation?->isClosed() && $resrvation?->isConfirmed())
-                                    &nbsp
-                                    <button class="modal_btn btn mx-1 btn-sm btn-danger btn-sm-icon"
-                                        data-title="Appointmet Report"
-                                        data-url="{{route("appointment.reserve.report", $resrvation->id)}}">
-                                        <i class="mdi mdi-close"></i>
-                                    </button>
-                                    &nbsp
-                                    @endif
+                                        <a style="cursor: pointer"
+                                            href="{{ route('patient.medicalProfile', $resrvation?->patient->id) }}">
+                                            <button data-toggle="tooltip" data-placement="left" title="patient profile"
+                                                class="badge  btn btn-info mx-2">
+                                                <i class="mdi mdi-eye"></i>
+                                            </button>
+                                        </a>
 
-                                    @if (!$resrvation?->isConfirmed())
-                                    <form action="{{ route('appointment.reserve.confirm', $resrvation->id) }}"
-                                        method="post" class="mx-2">
-                                        @csrf
-                                        <button class="delete_button mx-1 btn btn-sm btn-info btn-icon"
-                                            data-button_name="Approve" type="submit">
-                                            <i data-button_name="Approve" class="fa fa-stethoscope"></i>
-                                        </button>
-                                    </form>
-                                    @endif
+                                        @if (!$resrvation?->isClosed() && $resrvation?->isConfirmed())
+                                            <button data-title="Appointmet Report" data-toggle="tooltip"
+                                                title="close session" data-placement="left"
+                                                data-url="{{ route('appointment.reserve.report', $resrvation->id) }}"
+                                                class=" modal_btn badge  btn btn-danger mx-2">
+                                                <i class=" mdi mdi-close"></i>
+                                            </button>
+                                        @endif
 
-                                    <button class="btn btn-sm btn-info btn-icon" data-toggle="modal"
-                                        data-target="#modal4{{$resrvation?->patient->id}}">
-                                        <i class="fa fa-flask"></i>
-
-                                    </button>
-                                </td>
-                                <div style="display: none;">
-                                    {{$employee = Employee::where('name', $employee?->name)->first();}}
-                                    {{$department_id = $employee->department_id; }}
-                                    {{$department = Department::where('id', $department_id)->first();}}
-                                    {{$department_name = $department->name; }}
-                                </div>
-                                <div class="modal" id="modal4{{$resrvation?->patient->id}}"
-                                    aria-labelledby="modal4{{$resrvation?->patient->id}}Label"
-                                    value="{{$resrvation?->patient->id}}">
-                                    <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content modal-content-demo">
-                                            <div class="modal-header">
-                                                <h6 class="modal-title">Request Analysis</h6>
-                                                <button aria-label="Close" class="close" data-dismiss="modal"
-                                                    type="button">
-                                                    <span aria-hidden="true">&times;</span>
+                                        @if (!$resrvation?->isConfirmed())
+                                            <form action="{{ route('appointment.reserve.confirm', $resrvation->id) }}"
+                                                method="post" class="mx-2">
+                                                @csrf
+                                                <button data-button_name="Approve" data-toggle="tooltip"
+                                                    data-placement="left" title="start session"
+                                                    class="delete_button badge btn btn-primary" type="submit">
+                                                    <i data-button_name="Approve" class="mdi mdi-pen"></i>
                                                 </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="{{ url('/Storelab2') }}" method="post"
-                                                    enctype="multipart/form-data">
-                                                    @csrf
-                                                    <div class="col-lg">
-                                                        <p class="mg-b-10">Patient ID</p>
-                                                        <input class="form-control" placeholder="Enter ID"
-                                                            name="patient_id" id="patient-id"
-                                                            value="{{$resrvation?->patient->id}}" readonly>
-                                                    </div>
-                                                    <br>
-                                                    <div class="col-lg mg-t-10 mg-lg-t-0">
-                                                        <p class="mg-b-10">Patient Name</p>
-                                                        <input class="form-control" placeholder="Patient name"
-                                                            name="patient_name" id="patient_name"
-                                                            value="{{$resrvation?->patient->name}}" readonly="text">
-                                                    </div>
-                                                    <br>
-                                                    <div class="col-lg mg-t-10 mg-lg-t-0">
-                                                        <p class="mg-b-10"> Doctor Name </p>
-                                                        <input class="form-control" placeholder="Patient name"
-                                                            name="doctor_name" id="doctor_name"
-                                                            value="{{$employee?->name}}" readonly="text">
-                                                    </div>
-
-                                                    <br>
-                                                    <div class="col-lg mg-t-10 mg-lg-t-0">
-                                                        <p class="mg-b-10"> Department Name </p>
-                                                        <input class="form-control" placeholder="Patient name"
-                                                            name="department_name" id="department_name"
-                                                            value="{{$department_name}}" readonly="text">
-                                                    </div>
-                                                    <br>
-                                                    <div class="col-lg-4 mg-t-20 mg-lg-t-0">
-                                                        <p class="mg-b-10">Analysis type</p><select
-                                                            class="form-control select2" name="type">
-                                                            <option label="Analysis">
-                                                            </option>
-                                                            <option value="COVID">
-                                                                COVID
-                                                            </option>
-                                                            <option value="X-RAY">
-                                                                X-RAY
-                                                            </option>
-                                                        </select>
-                                                    </div>
-
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button class="btn ripple btn-info" type="submit">Confirm</button>
-                                                <button class="btn ripple btn-secondary" data-dismiss="modal"
-                                                    type="button">Close</button>
-                                            </div>
                                             </form>
-                                        </div>
-                                    </div>
-                                </div>
+                                        @endif
 
-                            </tr>
+                                    </td>
+                                </tr>
                             @endforeach
 
                         </tbody>
@@ -217,63 +151,12 @@ $lab2 = Lab::all();
     </div>
     <!--/div-->
 
-
+    <!--div-->
     <div class="col-xl-6">
         <div class="card">
             <div class="card-header pb-0">
                 <div class="d-flex justify-content-between">
-                    <h4 class="card-title mg-b-0"><i class="fa fa-check-circle" style="color:#22c03c"></i>&nbsp Finished</h4>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table id="lab-finished" class="table mg-b-0 text-md-nowrap">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Patient Id</th>
-                                <th>Type</th>
-                                <th>Files</th>
-                            </tr>
-                        </thead>
-                        @foreach($lab2 as $lab)
-                        @if($lab->status == 'finished' && $lab->doctor_name==$employee->name)
-                        <tbody>
-                            <tr>
-                                <th scope="row">{{$lab->id}}</th>
-                                <td>{{$lab->patient_id}}</td>
-                                <td>{{$lab->type}}</td>
-                                <td><a class="btn btn-info button-with-icon" download  href="{{ asset('storage/images/'. $lab->attachements) }}"
-                                        target="_blank">
-                                        <i class="fe fe-eye"></i>
-                                        Download Attachement</a>
-                                    {{-- <img src="{{asset('storage/images/'.$lab->attachements  )}}" width="50px"
-                                    height="50px" > --}}
-                                </td>
-
-                            </tr>
-                        </tbody>
-                        @endif
-                        @endforeach
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-</div>
-
-
-
-<!--div-->
-<div class="row row-sm">
-    <div class="col-xl-12">
-        <div class="card">
-            <div class="card-header pb-0">
-                <div class="d-flex justify-content-between">
-                    <h4 class="card-title mg-b-0"><i class="fa fa-address-book" style="color:#00b4ff"></i>&nbsp My Patients</h4>
+                    <h4 class="card-title mg-b-0">My Patients</h4>
                     <i class="mdi mdi-dots-horizontal text-gray"></i>
                 </div>
             </div>
@@ -290,28 +173,54 @@ $lab2 = Lab::all();
                         </thead>
                         <tbody>
                             @foreach ($employee?->patients()->take(5) as $patient)
-                            <tr>
-                                <th scope="row">{{$loop->iteration}}</th>
-                                <td>{{$patient->name}}</td>
-                                <td>{{$patient?->resrvations()->forAuthDoctor()->closed()->count()}}</td>
-                                <td class="d-flex">
+                                <tr>
+                                    <th scope="row">{{ $loop->iteration }}</th>
+                                    <td>{{ $patient->name }}</td>
+                                    <td>{{ $patient?->resrvations()->forAuthDoctor()->closed()->count() }}</td>
+                                    <td class="d-flex">
 
-                                    <a href="{{ route("patient.medicalProfile", $patient->id) }}"
-                                        class="badge btn btn-info mx-2" data-toggle="tooltip" title="patient profile">
-                                        <i class="mdi mdi-eye"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                                        <a href="{{ route('patient.medicalProfile', $patient->id) }}">
+                                            <button class="badge btn btn-info mt-1 mx-2" data-placement="left"
+                                                data-toggle="tooltip" title="patient profile">
+
+
+                                                <i class="mdi mdi-eye"></i>
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <!-- /row -->
     </div>
+
+</div>
+
+<!-- /row -->
 </div>
 <!-- Container closed -->
 </div>
+<form action="" class="filter">
+    <label for="">Age</label>
+    <input data-filter=">" type="number" value="{{filterValue("age")}}" name="age" id="">
+    
+    <label for="">Created At From</label>
+    <input data-filter="bt" type="date" value="{{filterValue("created_at", asArray: true)[0] ?? now()->format("Y-m-d")}}" name="created_at[0]" id="">
+
+    <label for="">Created At To</label>
+    <input type="date" value="{{filterValue("created_at", asArray: true)[1] ?? now()->format("Y-m-d")}}" name="created_at[1]" id="">
+
+    <label for="">Role</label>
+    <select data-filter="in"  name="role_id[]" id="" multiple>
+        <option value="0">admin</option>
+        <option value="1">manager</option>
+        <option value="2">employee</option>
+    </select>
+
+    <button type="submit" >filter</button>
+</form>
+
 <!-- main-content closed -->
-</div>

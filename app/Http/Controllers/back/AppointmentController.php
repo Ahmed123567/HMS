@@ -64,13 +64,9 @@ class AppointmentController extends Controller
 
     public function resrvations(Employee $doctor)
     {
-
-        $reservations = $doctor?->reservatoins()->latest()->when(request("today") == 1, function ($q) {
-            return $q->today();
-        })->get();
-
-        return view("admin.doctor.resrvations", compact("reservations"));
+        return view("admin.doctor.resrvations", compact("doctor"));
     }
+
 
     public function report(AppointmentResrvation $appointmentResrvation)
     {
@@ -88,4 +84,5 @@ class AppointmentController extends Controller
 
         return back()->with("success", "appointment closed successfully");
     }
+
 }

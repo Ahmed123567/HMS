@@ -41,7 +41,7 @@ class Patient extends Model
 
 
     public function exceededResrvationsDailyLimit($time) {
-        return $this->resrvations()->atDay($time)->count() >= 3;
+        return $this->resrvations()->atDay($time)->count() >= settings("reservation_patient_reservation_limit_per_day");
     }
 
     public function scopeDosentHaveAccount(Builder $q) {

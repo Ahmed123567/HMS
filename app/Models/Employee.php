@@ -54,6 +54,9 @@ class Employee extends Model
         return $this->shift->days->doesntContain($day);
     }
 
+    public function hasResrvationAt($time) {
+        return $this->reservatoins()->at($time)->exists();
+    }
 
 
     public function scopeManagers(Builder $q) {
@@ -79,4 +82,5 @@ class Employee extends Model
     public function scopeDosentHaveAccount(Builder $q) {
         return $q->doesntHave("user");
     }
+
 }

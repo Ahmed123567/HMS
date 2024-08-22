@@ -103,7 +103,7 @@
                                                 <td>{{ $resrvation->doctor->department->name ?? '-' }}</td>
                                                 <td>{{ $resrvation->doctor->name ?? '-' }}</td>
                                                 <td>
-                                                    @if (!$resrvation->time->isPast())
+                                                    @if (!$resrvation->time->isPast() && !$resrvation->isConfirmed())
                                                         <form action="{{ route("patient.view.reservation", $resrvation->id) }}" method="post"
                                                             class="mx-1">
                                                             @method('delete')

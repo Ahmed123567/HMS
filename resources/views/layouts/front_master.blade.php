@@ -30,7 +30,7 @@
     <link rel="stylesheet" href={{ asset('css/flaticon.css') }}>
     <link rel="stylesheet" href={{ asset('css/icomoon.css') }}>
     <link rel="stylesheet" href={{ asset('css/style.css') }}>
-
+    
 
 </head>
 
@@ -187,6 +187,7 @@
     <script src={{ asset('js/bootstrap-datetimepicker.min.js') }}></script>
     <script src={{ asset('js/main.js') }}></script>
     <script src="{{ asset('assets/js/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
+
 
     <script>
         $(".modal_btn").on("click", function() {

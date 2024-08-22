@@ -41,45 +41,9 @@
 
     <div class="row row-sm">
         <div class="col-xl-12">
-            <div class="card">
-                <div class="card-header pb-0">
-                    <div class="d-flex justify-content-between">
-                        <h4 class="card-title mg-b-0">Patient Records</h4>
-                        <i class="mdi mdi-dots-horizontal text-gray"></i>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-
-                        <table class="table text-md-nowrap" id="exampl">
-                            <thead>
-                                <tr>
-                                    <th>Diagnosis</th>
-                                    <th>Description</th>
-                                    <th>Files</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                @foreach ($patient->records as $record)
-                                    <tr>
-                                        <td>{{ $record->diagnosis }}</td>
-                                        <td>{{ $record->description }}</td>
-                                        <td>
-                                            @if ($record->files)
-                                                <a href="{{ route('patient.files', $record->id) }}">Download Files</a>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforeach
-
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div>
-            </div>
+            <livewire:medical-profile-table :patient="$patient" />
         </div>
+    </div>
         <!--/div-->
     @endsection
     @section('js')

@@ -188,10 +188,3 @@ foreach ($messages as $message) {
 </div>
 <!-- /main-header -->
 
-<script>
-    setInterval(function() {
-        $("#messages").load(window.location.href + " #messages");
-        $("#count").load(window.location.href + " #count");
-
-    }, 5000);
-</script>

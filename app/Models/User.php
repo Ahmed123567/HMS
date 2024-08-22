@@ -4,6 +4,10 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use Abdo\Searchable\Attributes\Search;
+use Abdo\Searchable\Attributes\SearchAdd;
+use Abdo\Searchable\Attributes\SearchColumns;
+use Abdo\Searchable\Searchable;
 use App\Concern\HasDate;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
@@ -22,6 +26,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasDate;
 
+    use Searchable;
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -48,20 +54,25 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    #[SearchColumns]
+    public $searchable = [
+        "columns" => [
+            "name",
+            "email",
+            "role.name",
+            "created_at"
+        ],
+    ];
 
-    public static function boot() {
-        parent::boot();
-        static::creating(function($user) {
-            $user->password = Hash::make($user->password);
-        });
+    #[SearchAdd("created_at")]
+    public function searchBuyCreatedAtDayName(Builder $q, $searchWord) {
+        $q->whereRaw("DAYNAME(created_at) like ?", ["%" . $searchWord . "%"]);
+    } 
 
-        static::updating(function($user) {
-            if(!empty(request()->password)) {
-                $user->password = Hash::make($user->password);
-            }
-        });
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
     }
-
 
     public function role() : BelongsTo {
         return $this->belongsTo(Role::class, "role_id");
